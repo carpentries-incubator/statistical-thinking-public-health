@@ -1,12 +1,19 @@
 ---
 title: "Identifying and plotting normal and binomial distriutions"
-author: "Ezra Herman"
-date: "05/02/2021"
-output: html_document
+source: Rmd
+objectives:
+  - "ABC"
+keypoints:
+  - "DEF"
+questions:
+  - "GHI"
+teaching: 0
+execises: 0
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("01-")
 ```
 
 ## R Markdown
