@@ -11,8 +11,9 @@ teaching: 0
 execises: 0
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("01-")
 ```
 
 ## R Markdown
