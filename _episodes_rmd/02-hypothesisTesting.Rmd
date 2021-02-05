@@ -1,6 +1,6 @@
 ---
 source: Rmd
-title: "Identifying and plotting normal and binomial distributions"
+title: "The concept of hypothesis testing"
 objectives:
   - "ABC"
 keypoints:
