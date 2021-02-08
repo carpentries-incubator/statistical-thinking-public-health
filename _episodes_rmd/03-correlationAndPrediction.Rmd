@@ -1,0 +1,18 @@
+---
+source: Rmd
+title: "Correlations and predictive relationships"
+objectives:
+  - "ABC"
+keypoints:
+  - "DEF"
+questions:
+  - "GHI"
+teaching: 10
+execises: 10
+---
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("03-")
+```
+
