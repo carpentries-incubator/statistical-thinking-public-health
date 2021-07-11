@@ -1,4 +1,5 @@
 library(NHANES)
+library(RNHANES)
 library(dplyr)
 
 # proportions representing a simple random sample
@@ -38,6 +39,16 @@ dat <- NHANESraw %>%
             CompHrsDayChild)) %>% # remove data which was only recorded for 
   # one out of two survey rounds
   ungroup(Race1)
+
+# Add FEV1 variable
+dat <- nhanes_load_data(c("SPX_F"), "2009-2010") %>%
+  select(SEQN, SPXNFEV1) %>%
+  bind_rows(nhanes_load_data(c("SPX_G"), "2011-2012") %>% 
+              select(SEQN, SPXNFEV1)) %>%
+  filter(SEQN %in% dat$ID) %>%
+  rename(FEV1 = SPXNFEV1) %>%
+  right_join(dat, by = c("SEQN" = "ID")) %>%
+  rename(ID = SEQN)
 
 rm(prop)
 
