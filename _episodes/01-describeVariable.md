@@ -82,6 +82,9 @@ of female heights in the US using `rnorm()`. We store these values in a tibble,
 with the column named `heights`.
 
 
+
+
+
 ~~~
 sample <- tibble(heights = rnorm(1000, mean = 112, sd = 6.89))
 ~~~
@@ -116,7 +119,7 @@ meanHeight
 
 
 ~~~
-[1] 112.1409
+[1] 112.2838
 ~~~
 {: .output}
 
@@ -133,7 +136,7 @@ variance
 
 
 ~~~
-[1] 51.3285
+[1] 49.21161
 ~~~
 {: .output}
 
@@ -150,7 +153,7 @@ sqrt(variance)
 
 
 ~~~
-[1] 7.164391
+[1] 7.015098
 ~~~
 {: .output}
 
@@ -158,6 +161,9 @@ sqrt(variance)
 > ## Exercise
 > The normal distribution of systolic blood pressure has a mean of 112 mmHg 
 > and a standard deviation of 10 mmHg. The distribution looks as follows:
+> 
+> 
+> 
 > <img src="../fig/rmd-01-blood pressure density plot-1.png" title="plot of chunk blood pressure density plot" alt="plot of chunk blood pressure density plot" width="612" style="display: block; margin: auto;" />
 > A) Sample one thousand observations from this distribution. Then, create a histogram of your sample.  
 > B) Calculate the average systolic blood pressure in your sample.
@@ -203,7 +209,7 @@ sqrt(variance)
 > > 
 > > 
 > > ~~~
-> > [1] 100.0541
+> > [1] 103.6643
 > > ~~~
 > > {: .output}
 > > 
@@ -220,7 +226,7 @@ sqrt(variance)
 > > 
 > > 
 > > ~~~
-> > [1] 10.0027
+> > [1] 10.18157
 > > ~~~
 > > {: .output}
 > {: .solution}

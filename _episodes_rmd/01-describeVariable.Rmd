@@ -95,6 +95,11 @@ For example, we can sample 1000 observations from the distribution
 of female heights in the US using `rnorm()`. We store these values in a tibble,
 with the column named `heights`.
 
+```{r set seed heights, echo = FALSE}
+set.seed(112)
+```
+
+
 ```{r sample from female heights}
 sample <- tibble(heights = rnorm(1000, mean = 112, sd = 6.89))
 ```
@@ -139,6 +144,11 @@ sqrt(variance)
 > ## Exercise
 > The normal distribution of systolic blood pressure has a mean of 112 mmHg 
 > and a standard deviation of 10 mmHg. The distribution looks as follows:
+> 
+> ```{r set seed BP, echo = FALSE}
+> set.seed(112)
+> ```
+> 
 > ```{r blood pressure density plot, echo = FALSE}
 > range <- tibble(limits = c(112 - 10 * 4, 112 + 10 * 4))
 > 
