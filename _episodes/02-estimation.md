@@ -20,9 +20,11 @@ execises: 10
 
 In the previous episode, we obtained an estimate of the mean by simulating from
 a normal distribution. This simulation was akin to obtaining 
-one sample in the real world.
-In this episode, we will learn how to estimate the variation in the mean estimate,
-if we were to obtain many samples from the same distribution.  
+one sample in the real world. We learned that as is the case in the real
+world, every sample will differ from the next sample slightly.
+
+In this episode, we will learn how to estimate the variation in the mean estimate.
+This will tell us how far we can expect the population mean to lie from our sample mean. 
 We will also visualise the variation in the
 estimate of the mean, when we simulate many times from the same distribution.
 This will allow us to understand the meaning of the 95% confidence interval.
@@ -60,7 +62,8 @@ i.e. the mean +- 1.96 times the standard error.
 The definition of the 95% confidence interval is a bit convoluted: 
 *95% of 95% confidence intervals are expected to contain the true population mean*.
 
-Imagine we were to obtain 100 samples of female heights in the US. For each sample, 
+Imagine we were to obtain 100 samples of female heights in the US, with each
+sample containing 1000 observations. For each sample, 
 we would calculate a mean and a 95% confidence interval. By the definition of
 the interval, we would expect 95 of the intervals to contain the true mean of 162 cm.
 In other words, we would expect 5 of our samples to give confidence intervals that
@@ -100,6 +103,13 @@ CI
 ~~~
 {: .output}
 
+The confidence interval shown above has a lower bound of 161.7898 
+and an upper bound of 162.6439. In this instance, we have obtained
+a 95% confidence interval that captures the population mean of 162.
+The confidence interval that you obtain may not capture the population mean
+of 162. It would then be part of the 5% of 95% confidence intervals
+that do not capture the population mean. 
+
 > ## Exercise
 > A) Given the distribution of systolic blood pressure, with a mean of 112 mmHg
 > and a standard deviation of 10 mmHg, calculate the standard error of a mean
@@ -110,6 +120,12 @@ CI
 > estimate. How do we interpret this interval?
 > 
 > > ## Solution
+> > Throughout this solution, your results will differ slightly from the ones
+> > shown below. This is a consequence of `rnorm()` drawing random samples.
+> > If you are completing this episode in a workshop setting, ask your 
+> > neighbour to compare results! If you are working through this episode
+> > independently, try running your code again to see how the results differ.
+> > 
 > > A) The standard error equals the standard deviation divided by the square root
 > > of the sample size. We expect the difference between the estimated mean
 > > and the population mean to equal 0.22 mmHg, on average. 
@@ -149,6 +165,10 @@ CI
 > > [1] 111.1055 111.9821
 > > ~~~
 > > {: .output}
+> > The confidence interval has lower bound 111.1055 and upper bound
+> > 111.9821. The interval does not capture the population mean of 
+> > 112 and therefore belongs to the 5% of 95% CIs that do not capture
+> > the population mean. 
 > {: .solution}
 {: .challenge}
 
@@ -173,7 +193,7 @@ means <- tibble(sampleID = c(),
 ~~~
 {: .language-r}
 
-Then, we calculate the standard error  using the standard deviation and the sample size.
+Then, we calculate the standard error using the standard deviation and the sample size.
 
 
 ~~~
@@ -231,6 +251,12 @@ ggplot(means, aes(x = meanHeight, y = sampleID, colour = capture)) +
 
 <img src="../fig/rmd-02-plot heights confidence intervals-1.png" title="plot of chunk plot heights confidence intervals" alt="plot of chunk plot heights confidence intervals" width="612" style="display: block; margin: auto;" />
 
+In this instance, two out of 100 95% confidence intervals did not capture
+the population mean. If you run the above code multiple times, you will
+discover that there is variation in the number of confidence intervals
+that capture the population mean. On average, 5 out of 100 95% confidence
+intervals will not capture the population mean. 
+
 > ## Exercise
 > A) Given the distribution of systolic blood pressure, with a mean of 112 mmHg
 > and a standard deviation of 10 mmHg, simulate 100 data sets of 2000 observations
@@ -240,9 +266,15 @@ ggplot(means, aes(x = meanHeight, y = sampleID, colour = capture)) +
 > interval whether the original mean of 112 mmHg was captured.  
 > C) Plot the mean values alongside their 95% confidence intervals. How
 > many of your 95% confidence intervals do not contain the true population 
-> mean of 112 mmHg?
+> mean of 112 mmHg? 
 > 
 > > ## Solution
+> > Throughout this solution, your results will differ slightly from the ones
+> > shown below. This is a consequence of `rnorm()` drawing random samples.
+> > If you are completing this episode in a workshop setting, ask your 
+> > neighbour to compare results! If you are working through this episode
+> > independently, try running your code again to see how the results differ.
+> > 
 > > A) 
 > > 
 > > 
@@ -278,8 +310,8 @@ ggplot(means, aes(x = meanHeight, y = sampleID, colour = capture)) +
 > > C) In this instance, three 95% confidence intervals did not contain
 > > the true population mean. Since `rnorm()` draws random samples,
 > > you may have more or less 95% confidence intervals that capture the 
-> > true population mean. On average, we would expect 5 out of 100 95% confidence
-> > intervals to not contain the true population mean. 
+> > true population mean. On average, we 5 out of 100 95% confidence
+> > intervals will fail to capture the population mean. 
 > > 
 > > 
 > > ~~~

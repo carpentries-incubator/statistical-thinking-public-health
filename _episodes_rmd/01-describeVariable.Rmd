@@ -49,7 +49,7 @@ ggplot(range, aes(x=limits)) +
 You may recognise the shape of the above distribution. It is an example of a
 *normal* distribution. 
 
-Let's say we have sampled 1000 observations of female height. 
+Let's say we sampled 1000 observations of female height. 
 We can refer to these observations as $y_i$, with $i = 1, \dots, 1000$. 
 The distribution of female heights has a few properties of interest, which we can estimate using our sample.
 
@@ -89,7 +89,8 @@ be 6.89 cm.
 ## Estimating the mean, variance and standard deviation through simulation
 Another route to understanding the mean, variance and standard deviation is
 through *simulation*. This is the process of *sampling* data from a distribution
-using R. 
+using R. This is akin to collecting observations in the real world, where
+obervations come from an underlying distribution. 
 
 For example, we can sample 1000 observations from the distribution
 of female heights in the US using `rnorm()`. We store these values in a tibble,
@@ -107,8 +108,11 @@ sample <- tibble(heights = rnorm(1000, mean = 112, sd = 6.89))
 Before calculating the mean, variance and standard deviation, let's create
 a histogram of our sample. Although not a perfect representation, our histogram
 looks quite similar to the distribution shown at the start of this episode. Your
-plot might differ slightly from the histogram shown below, as `rnorm()` obtained
-a random sample. 
+plot will differ slightly from the histogram shown below, as `rnorm()` obtained
+a random sample. If you create a new `sample` and run the `ggplot()` code again, 
+the histogram will differ slightly again. Every `sample` contains 1000 new observations
+from the same distribution, akin to running an experiment where we collect 1000
+observations. 
 
 ```{r histogram sample female heights, message = FALSE}
 ggplot(sample, aes(x = heights)) +
@@ -116,7 +120,7 @@ ggplot(sample, aes(x = heights)) +
 ```
 
 We can calculate the mean of our sample using `mean()`. This value lies 
-close to the original mean of 112 cm. Here we see that the mean of a distribution
+close to the original mean of 162 cm. Here we see that the mean of a distribution
 approximately equals the mean of our sample.
 
 ```{r mean female heights}
@@ -166,6 +170,12 @@ sqrt(variance)
 > D) Calculate the standard deviation of your sample. How is the standard deviation interpreted here?
 > 
 > > ## Solution
+> > Throughout this solution, your results will differ slightly from the ones
+> > shown below. This is a consequence of `rnorm()` drawing random samples.
+> > If you are completing this episode in a workshop setting, ask your 
+> > neighbour to compare results! If you are working through this episode
+> > independently, try running your code again to see how the results differ.
+> > 
 > > A) We obtain 1000 observations from the systolic blood pressure distribution using `rnorm()`. 
 > > We store these values in an object named `sample`. We then create a histogram
 > > using `geom_histogram()`.
