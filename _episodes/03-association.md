@@ -24,7 +24,7 @@ the mean of another variable in the next episode, when an association exists.
 
 ## Visually checking for a linear association
 The first way to check for a linear association is through a scatterplot.
-For example, below we create a scatterplot of adult weight vs. height.
+For example, below we create a scatterplot of adult Weight vs. Height.
 We subset our data (`dat`) for adult participants using `filter()`, after which
 we specify the x and y axes in `ggplot()` and call for a scatterplot using
 `geom_point()`. Note that `dat` is loaded into the environment by following
@@ -41,12 +41,12 @@ dat %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-03-explore association height and weight-1.png" title="plot of chunk explore association height and weight" alt="plot of chunk explore association height and weight" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-03-explore association Height and Weight-1.png" title="plot of chunk explore association Height and Weight" alt="plot of chunk explore association Height and Weight" width="612" style="display: block; margin: auto;" />
 
-We see that on average, higher weights are associated with higher heights. 
+We see that on average, higher Weights are associated with higher Heights. 
 This is an example of a *positive* linear association, as we see an increase
 along the y-axis as the values on the x-axis increase.
-The linear association suggests that we could use weights to predict heights. 
+The linear association suggests that we could use Weights to predict Heights. 
 
 In the exercise below you will explore examples of a negative linear association
 and an absence of a linear association.
@@ -95,10 +95,10 @@ coefficient. This metric ranges from -1 to 1.
 
 Let's see these in practice by calculating the correlation coefficient
 for the associations that we explored above. To calculate the correlation
-coefficient for weight and height, we again select adult participants using 
+coefficient for Weight and Height, we again select adult participants using 
 `filter()`. Then, we calculate the correlation inside a call to `summarise()`.
 The correlation is given by the `cor()` function, where `use = "complete.obs"`
-ensures that participants for which weight or height data is missing are ignored. 
+ensures that participants for which Weight or Height data is missing are ignored. 
 
 
 ~~~

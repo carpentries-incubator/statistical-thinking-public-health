@@ -174,10 +174,10 @@ intervals for systolic blood pressure as a function of physical activity.
 ## Mean prediction using a continuous explanatory variable
 Now we will expand the approach learnt above to prediction using a 
 continuous explanatory variable. We will try to predict
-weight from height in adult participants. 
+Weight from Height in adult participants. 
 
-Let's first explore the association between height and weight. To make grouping
-observations easier, we will round height to the nearest integer
+Let's first explore the association between Height and Weight. To make grouping
+observations easier, we will round Height to the nearest integer
 before plotting and performing downstream calculations. We will round
 using `mutate()`, as shown in the plotting command below.
 
@@ -192,9 +192,9 @@ dat %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-explore association rounded height and weight-1.png" title="plot of chunk explore association rounded height and weight" alt="plot of chunk explore association rounded height and weight" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-explore association rounded Height and Weight-1.png" title="plot of chunk explore association rounded Height and Weight" alt="plot of chunk explore association rounded Height and Weight" width="612" style="display: block; margin: auto;" />
 
-Now we can calculate the mean weight by height:
+Now we can calculate the mean Weight by Height:
 
 
 ~~~
@@ -230,10 +230,10 @@ dat %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-explore association rounded height and weight with means-1.png" title="plot of chunk explore association rounded height and weight with means" alt="plot of chunk explore association rounded height and weight with means" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-explore association rounded Height and Weight with means-1.png" title="plot of chunk explore association rounded Height and Weight with means" alt="plot of chunk explore association rounded Height and Weight with means" width="612" style="display: block; margin: auto;" />
 
 We see that as the positive correlation coefficient suggested, mean
-weight indeed increases with height. The outer confidence intervals are much
+Weight indeed increases with Height. The outer confidence intervals are much
 wider than the central confidence intervals, because many less observations
 were used to estimate the outer means. There are also a few red points
 without a confidence interval, because those means were estimated with single

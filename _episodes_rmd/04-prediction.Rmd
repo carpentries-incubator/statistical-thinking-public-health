@@ -149,14 +149,14 @@ intervals for systolic blood pressure as a function of physical activity.
 ## Mean prediction using a continuous explanatory variable
 Now we will expand the approach learnt above to prediction using a 
 continuous explanatory variable. We will try to predict
-weight from height in adult participants. 
+Weight from Height in adult participants. 
 
-Let's first explore the association between height and weight. To make grouping
-observations easier, we will round height to the nearest integer
+Let's first explore the association between Height and Weight. To make grouping
+observations easier, we will round Height to the nearest integer
 before plotting and performing downstream calculations. We will round
 using `mutate()`, as shown in the plotting command below.
 
-```{r explore association rounded height and weight, warning = FALSE}
+```{r explore association rounded Height and Weight, warning = FALSE}
 dat %>%
   drop_na(Weight, Height) %>%
   filter(Age > 17) %>%
@@ -165,9 +165,9 @@ dat %>%
   geom_point()
 ```
 
-Now we can calculate the mean weight by height:
+Now we can calculate the mean Weight by Height:
 
-```{r mean weight by height}
+```{r mean Weight by Height}
 means <- dat %>%
   drop_na(Weight, Height) %>%
   filter(Age > 17) %>%
@@ -185,7 +185,7 @@ means <- dat %>%
 Finally, we can overlay these means and confidence intervals onto the 
 scatterplot. 
 
-```{r explore association rounded height and weight with means, warning = FALSE}
+```{r explore association rounded Height and Weight with means, warning = FALSE}
 dat %>%
   drop_na(Weight, Height) %>%
   filter(Age > 17) %>%
@@ -198,7 +198,7 @@ dat %>%
 ```
 
 We see that as the positive correlation coefficient suggested, mean
-weight indeed increases with height. The outer confidence intervals are much
+Weight indeed increases with Height. The outer confidence intervals are much
 wider than the central confidence intervals, because many less observations
 were used to estimate the outer means. There are also a few red points
 without a confidence interval, because those means were estimated with single
