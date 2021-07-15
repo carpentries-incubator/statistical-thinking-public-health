@@ -30,7 +30,7 @@ estimate of the mean, when we simulate many times from the same distribution.
 This will allow us to understand the meaning of the 95% confidence interval.
 
 ## The standard error 
-In the previous episode, we learnt that the standard deviation is the average
+In the previous episode, we learnt that the standard deviation is a measure of the 
 expected difference between a value in the distribution and the mean of
 the distribution. In this episode we will work with a related quantity, called
 the *standard error*. The standard error quantifies the average difference
