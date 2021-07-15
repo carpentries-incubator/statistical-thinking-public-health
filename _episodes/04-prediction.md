@@ -56,7 +56,9 @@ dat %>%
 
 It is hard to tell from the above plot whether the mean systolic blood pressure
 differs across physical activity. Let's calculate the means and 
-confidence intervals. In the code below, we group observations by physical
+confidence intervals. In the code below, we first remove rows with missing 
+values using `drop_na()` from the `tidyr` package. 
+We then group observations by physical
 activity using `group_by()`. We then calculate the mean, standard error and
 confidence interval bounds inside `summarise()`.
 
