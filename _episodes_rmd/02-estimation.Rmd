@@ -70,8 +70,8 @@ The definition of the 95% confidence interval is a bit convoluted:
 Imagine we were to obtain 100 samples of female heights in the US, with each
 sample containing 1000 observations. For each sample, 
 we would calculate a mean and a 95% confidence interval. By the definition of
-the interval, we would expect 95 of the intervals to contain the true mean of 162 cm.
-In other words, we would expect 5 of our samples to give confidence intervals that
+the interval, we would expect approximately 95 of the intervals to contain the true mean of 162 cm.
+In other words, we would expect approximately 5 of our samples to give confidence intervals that
 do not contain the true mean of 162 cm.
 
 What does this mean in practice? When we calculate a 95% confidence interval, 
@@ -179,10 +179,10 @@ Then, we calculate the standard error using the standard deviation and the sampl
 stdErr <- 6.89/sqrt(1000)
 ```
 
-We simulate the heights data using a `for` loop. This gives us 100 iterations,
+We simulate the Heights data using a `for` loop. This gives us 100 iterations,
 in which samples are drawn as before using `rnorm()`. For each sample, 
 we add a row to our `means` tibble using `add_row()`. We include an ID for the
-sample, the mean height and the bounds of the 95% confidence interval. 
+sample, the mean Height and the bounds of the 95% confidence interval. 
 
 ```{r simulate heights data}
 for(i in 1:100){
