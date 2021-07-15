@@ -3,11 +3,10 @@ source: Rmd
 title: "Estimating the mean, variance and standard deviation"
 objectives:
   - "Estimate the mean, variance and standard deviation of a variable through simulation."
-  - "Interpret the standard deviation as the average difference between sampled values and the mean."
 keypoints:
   - The mean is the average value expected in the population. The mean is also known as the expectation.
   - The variance is the average of the squared differences between values in the distribution and the mean of the distribution.
-  - The standard deviation is the square root of the variance. It represents the average difference between values in the distribution and the mean of the distribution. 
+  - The standard deviation is the square root of the variance. It measures the spread of observations around the mean, in units of the original data. 
 questions:
   - How are the mean, variance and standard deviation calculated and interpreted?
 teaching: 10
@@ -74,8 +73,8 @@ Breaking this down, we see that the variance is calculated using:
 * $E( (y - E(y))^2 )$, i.e. the expectation of this squared difference.
 
 Why are we interested in this value? We are mainly interested in the variance
-because it allows us to calculate the standard deviation, which has an intuitive
-interpretation. Let's look at this below.
+because it allows us to calculate the standard deviation, which can be interpreted
+on the original scale. Let's look at this below.
 
 ## The standard deviation
 The *standard deviation* of a distribution is the *square root* of the variance.
@@ -83,11 +82,11 @@ The standard deviation is expressed as $\sigma_y$:
 
 $$\sigma_y = \sqrt{V(y)}$$
 
-The standard deviation is interpreted as the average difference between a 
-value in the distribution and the mean of that distribution. In the case
-of female heights in the US, with a standard deviation of 6.89 cm, we expect
-the average difference between a female's height and the mean height of 112 cm to
-be 6.89 cm. 
+The standard deviation is interpreted as a measure of the difference between
+values in the distribution and the mean of the distribution. A higher standard deviation
+indicates that the spread around the mean is greater. There is no "good" or "bad"
+standard deviation - its purpose is to give us an idea of the spread of observations
+in the population. 
 
 ## Estimating the mean, variance and standard deviation through simulation
 Another route to understanding the mean, variance and standard deviation is
@@ -140,8 +139,9 @@ variance
 ```
 
 Finally, we calculate the standard deviation as the square root of the variance.
-The square root is obtained using `sqrt()`. Recall that this is the average
-difference between sampled heights and the mean height. 
+The square root is obtained using `sqrt()`. Recall that we calculate the standard
+deviation to have a measure of spread in our distribution, in the same units
+as our original data (in this case, mmHg).
 
 ```{r square root female heights}
 sqrt(variance)
@@ -206,8 +206,8 @@ sqrt(variance)
 > > ```
 > > 
 > > D) The standard deviation equals the square root of the variance. 
-> > It is interpreted as the average difference between a sampled systolic blood pressure 
-> > and the mean systolic blood pressure. The square root can be calculated using `sqrt()`. 
+> > It is interpreted as a measure of the spread of sampled systolic blood pressure 
+> > values and the mean systolic blood pressure. The square root can be calculated using `sqrt()`. 
 > > 
 > > ```{r estimate standard deviation blood pressure}
 > > sqrt(variance)
