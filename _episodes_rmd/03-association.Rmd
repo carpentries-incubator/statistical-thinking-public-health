@@ -30,9 +30,11 @@ the mean of another variable in the next episode, when an association exists.
 ## Visually checking for a linear association
 The first way to check for a linear association is through a scatterplot.
 For example, below we create a scatterplot of adult weight vs. height.
-We subset our data for adult participants using `filter()`, after which
+We subset our data (`dat`) for adult participants using `filter()`, after which
 we specify the x and y axes in `ggplot()` and call for a scatterplot using
-`geom_point()`.
+`geom_point()`. Note that `dat` is loaded into the environment by following
+the- instructions on the 
+[setup](https://carpentries-incubator.github.io/statistical-thinking-public-health/setup.html) page.
 
 
 ```{r explore association height and weight, warning = FALSE}
