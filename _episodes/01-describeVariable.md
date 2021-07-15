@@ -20,7 +20,8 @@ execises: 10
 
 Often when doing statistics, we have a variable of interest, for which we want to
 estimate particular properties. A variable will follow a *distribution*, which shows
-how prevalent different values are. In this episode we will learn to estimate and 
+what values a variable can take on and how likely these are to occur.
+In this episode we will learn to estimate and 
 interpret the mean, variance and standard deviation of a variable's distribution. 
 These values allow us to estimate the average of a variable in the population and the 
 variation around that average. 
@@ -28,7 +29,9 @@ variation around that average.
 Before discussing the definitions of these values, let's look at an example. The
 heights of people of the female sex in the US approximately follow a distribution 
 with a mean of 162 cm and a standard deviation of 6.89 cm. 
-The distribution is shown below. 
+The distribution is shown below. Values on the x-axis with a greater Density on the
+y-axis have a higher chance of occuring. So 162 cm is most likely to occur, while
+140 cm is very unlikely to occur. 
 
 <img src="../fig/rmd-01-height density plot-1.png" title="plot of chunk height density plot" alt="plot of chunk height density plot" width="612" style="display: block; margin: auto;" />
 
