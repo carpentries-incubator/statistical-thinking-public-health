@@ -28,7 +28,7 @@ This will allow us to use one variable to predict the mean of another variable i
 next episode, when an association exists.
 
 ## Visually checking for a linear association
-The first way to check for a linear association is through a scatterplot.
+The first way to check for a linear association is by using a scatterplot.
 For example, below we create a scatterplot of adult Weight vs. Height.
 We subset our data (`dat`) for adult participants using `filter()`, after which
 we specify the x and y axes in `ggplot()` and make a scatterplot using
