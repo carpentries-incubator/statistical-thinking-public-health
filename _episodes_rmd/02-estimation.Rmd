@@ -2,8 +2,8 @@
 source: Rmd
 title: "Estimating the variation around the mean: standard errors and confidence intervals"
 objectives:
-  - "Explore the difference between a population parameter and sample estimates through simulation from a normal distribution."
-  - "Define the 95% confidence interval through simulation from a normal distribution."
+  - "Explore the difference between a population parameter and sample estimates by simulating data from a normal distribution."
+  - "Define the 95% confidence interval by simulating data from a normal distribution."
 keypoints:
   - "Sample means are expected to differ from the population mean, on average, by the standard error."
   - "95% of 95% confidence intervals are expected to capture the population mean. In practice, this means we are fairly confident that a 95% confidence interval will contain the population mean, but we do not know for sure."
@@ -42,8 +42,8 @@ the *standard error*. The standard error quantifies the average difference
 between a sample mean and the population mean. 
 
 For example, let's say we collected 1000 observations of female heights in
-the US, to estimate the mean height. The standard error of this estimate 
-would be `r round(6.89/sqrt(1000), 2)` cm. Therefore, on average, we expect
+the US, to estimate the mean height. The standard error of this estimate in this case is 
+`r round(6.89/sqrt(1000), 2)` cm. Therefore, on average, we expect
 means estimated in this way to differ from the population mean by 0.22 cm.
 
 The standard error is calculated using the standard deviation and the sample size:
@@ -62,9 +62,10 @@ This interval equals, for large samples:
 
 $$[E(y) - 1.96 \times \text{se}(y); E(y) + 1.96 \times \text{se}(y)],$$
 
-i.e. the mean +- 1.96 times the standard error.
+i.e. the mean +/- 1.96 times the standard error.
 
 The definition of the 95% confidence interval is a bit convoluted: 
+
 *95% of 95% confidence intervals are expected to contain the true population mean*.
 
 Imagine we were to obtain 100 samples of female heights in the US, with each
@@ -78,11 +79,11 @@ What does this mean in practice? When we calculate a 95% confidence interval,
 we are fairly confident that it will contain the true population mean, but
 we cannot know for sure. 
 
-Let's take a look at how we would calculate the 95% confidence interval in R.
+Let's take a look at how we can calculate the 95% confidence interval in R.
 First, we sample 1000 observations of female heights and calculate the mean, 
 as in the previous episode. Then, we calculate the standard error as the
 standard deviation divided by the square root of the sample size.
-Finally, the 95% confidence interval is given by the mean +- 1.96
+Finally, the 95% confidence interval is given by the mean +/- 1.96
 times the standard error. Note that your CI will differ slightly from the
 one shown below, as `rnorm()` obtains random samples. 
 
@@ -159,7 +160,7 @@ action, by simulating 100 data sets of 1000 female heights.
 
 First, we create a tibble for our means and confidence intervals.
 We name this tibble `means` and create empty columns for the sample IDs,
-mean heights, the lower bound of the confidence intervals and the higher
+mean heights, the lower bound of the confidence intervals and the upper
 bound of the confidence intervals. 
 
 ```{r set seed heights 2, echo = FALSE}
@@ -221,7 +222,7 @@ ggplot(means, aes(x = meanHeight, y = sampleID, colour = capture)) +
                     values = c("red", "black"))
 ```
 
-In this instance, two out of 100 95% confidence intervals did not capture
+In this instance, 2 out of 100 95% confidence intervals did not capture
 the population mean. If you run the above code multiple times, you will
 discover that there is variation in the number of confidence intervals
 that capture the population mean. On average, 5 out of 100 95% confidence
@@ -230,11 +231,11 @@ intervals will not capture the population mean.
 > ## Exercise
 > A) Given the distribution of systolic blood pressure, with a mean of 112 mmHg
 > and a standard deviation of 10 mmHg, simulate 100 data sets of 2000 observations
-> each. For each sample, store the sample ID, mean systolic blood pressure the 
+> each. For each sample, store the sample ID, mean systolic blood pressure and the 
 > 95% confidence interval in a tibble.  
 > B) Create an extra column in the tibble, indicating for each confidence
 > interval whether the original mean of 112 mmHg was captured.  
-> C) Plot the mean values alongside their 95% confidence intervals. How
+> C) Plot the mean values and their 95% confidence intervals. Add a line to show the population mean. How
 > many of your 95% confidence intervals do not contain the true population 
 > mean of 112 mmHg? 
 > 
