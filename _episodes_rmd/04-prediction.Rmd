@@ -109,6 +109,7 @@ intervals for systolic blood pressure as a function of physical activity.
 > B) Calculate the mean total cholesterol by smoking status, along with the 95% confidence 
 > interval for this mean estimate.  
 > C) Overlay these mean estimates and their confidence intervals onto the violin plot.
+> 
 > D) What can you conclude about the association between total HDL cholesterol and smoking?
 > 
 > > ## Solution
