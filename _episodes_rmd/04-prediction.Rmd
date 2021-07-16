@@ -38,7 +38,7 @@ as the *explanatory* variable.
 
 ## Mean prediction using a binary explanatory variable
 We will start by using a binary explanatory variable, i.e. a variable which
-can take on one of two values. For example, we can try to predict mean
+can take one of two values. For example, we can try to predict mean
 systolic blood pressure (`BPSysAve`) using physical activity (`PhysActive`). 
 Physical activity is a binary variable in the NHANES data, as it takes one of two values, "Yes" or "No".
 
