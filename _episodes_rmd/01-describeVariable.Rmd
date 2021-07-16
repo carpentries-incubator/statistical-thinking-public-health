@@ -60,7 +60,7 @@ The *mean* of the distribution is the average of all the values that make up tha
 
 The mean is also known as the *expectation* of a variable, $E()$. The expectation of female heights is expressed as $E(y)$:
 
-$$E(y) = \frac{1}{n} \left( \sum_{i=1}^n x_{i} \right)$$
+$$E(y) = \frac{1}{n} \left( \sum_{i=1}^n y_{i} \right)$$
 
 where $n = 1000$.
 
