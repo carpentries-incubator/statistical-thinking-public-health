@@ -19,7 +19,7 @@ execises: 10
 
 Often when doing statistics, we have a variable of interest, for which we want to
 estimate particular properties. A variable will follow a *distribution*, which shows
-what values a variable can take on and how likely these are to occur.
+what values a variable can take and how likely these are to occur.
 In this episode we will learn to estimate and 
 interpret the mean, variance and standard deviation of a variable's distribution. 
 These values allow us to estimate the average of a variable in the population and the 
@@ -28,8 +28,8 @@ variation around that average.
 Before discussing the definitions of these values, let's look at an example. The
 heights of people of the female sex in the US approximately follow a distribution 
 with a mean of 162 cm and a standard deviation of 6.89 cm. 
-The distribution is shown below. Values on the x-axis with a greater Density on the
-y-axis have a higher chance of occuring. So 162 cm is most likely to occur, while
+The distribution is shown below. Values on the x-axis with a greater density on the
+y-axis have a higher chance of occuring. So a height of 162 cm is most likely to occur, while a height of
 140 cm is very unlikely to occur. 
 
 <img src="../fig/rmd-01-height density plot-1.png" title="plot of chunk height density plot" alt="plot of chunk height density plot" width="612" style="display: block; margin: auto;" />
@@ -44,7 +44,11 @@ The distribution of female heights has a few properties of interest, which we ca
 ## The mean
 The *mean* of the distribution is the average of all the values that make up that distribution. In the case of female heights in the US, the mean is 162 cm. Therefore, the average height of a US female is 162 cm. We also expect the mean of our sample to equal 162 cm.
 
-The mean is also known as the *expectation* of a variable, $E()$. The expectation of female heights is expressed as $E(y)$. 
+The mean is also known as the *expectation* of a variable, $E()$. The expectation of female heights is expressed as $E(y)$:
+
+$$E(y) = \frac{1}{n} \left( \sum_{i=1}^n y_{i} \right)$$
+
+where $n = 1000$.
 
 ## The variance
 The *variance* is the average *squared* difference between values in the distribution 
@@ -89,7 +93,7 @@ with the column named `heights`.
 
 
 ~~~
-sample <- tibble(heights = rnorm(1000, mean = 112, sd = 6.89))
+sample <- tibble(heights = rnorm(1000, mean = 162, sd = 6.89))
 ~~~
 {: .language-r}
 
@@ -125,7 +129,7 @@ meanHeight
 
 
 ~~~
-[1] 112.2838
+[1] 162.2838
 ~~~
 {: .output}
 
@@ -206,8 +210,16 @@ sqrt(variance)
 > > 
 > > ~~~
 > > meanBP <- mean(sample$bloodPressure)
+> > meanBP
 > > ~~~
 > > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > [1] 112.4119
+> > ~~~
+> > {: .output}
 > > 
 > > C) The variance equals the average of the squared differences between the mean of the distribution and the
 > > observed values. This can be calculated as follows:

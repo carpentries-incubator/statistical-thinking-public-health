@@ -5,28 +5,28 @@ source: Rmd
 title: "Visualising and quantifying linear associations"
 objectives:
   - "Explore whether two variables appear to be associated using a scatterplot."
-  - "Calculate the size of an association between two variables using Pearson’s correlation."
+  - "Calculate the size of a linear association between two variables using Pearson’s correlation."
 keypoints:
   - "Scatterplots allow us to visually check the linear association between two variables."
-  - "Pearsons correlation coefficient allows us to quantify the scale of a linear association."
+  - "Pearson's correlation coefficient allows us to quantify the size of a linear association."
 questions:
-  - "How is the linear association between two variables checked visually?"
-  - "How is the scale of a linear associations quantified?"
+  - "How can we visualise the linear association between two variables?"
+  - "How can we quantify the size of a linear association?"
 teaching: 10
 execises: 10
 ---
 
 
 
-In this episode we will learn how to check whether two variables appear to have
-a linear association. This will allow us to use one variable to predict
-the mean of another variable in the next episode, when an association exists.
+In this episode we will learn how to check whether two variables are linearly associated. 
+This will allow us to use one variable to predict the mean of another variable in the 
+next episode, when an association exists.
 
 ## Visually checking for a linear association
-The first way to check for a linear association is through a scatterplot.
+The first way to check for a linear association is by using a scatterplot.
 For example, below we create a scatterplot of adult Weight vs. Height.
 We subset our data (`dat`) for adult participants using `filter()`, after which
-we specify the x and y axes in `ggplot()` and call for a scatterplot using
+we specify the x and y axes in `ggplot()` and make a scatterplot using
 `geom_point()`. Note that `dat` is loaded into the environment by following
 the- instructions on the 
 [setup](https://carpentries-incubator.github.io/statistical-thinking-public-health/setup.html) page.
@@ -86,7 +86,7 @@ and an absence of a linear association.
 {: .challenge}
 
 ## Quantifying the size of a linear association
-We can quantify the magnitude of a linear association using Person's correlation
+We can quantify the magnitude of a linear association using Pearson's correlation
 coefficient. This metric ranges from -1 to 1. 
 
 * A value of -1 indicates a perfect negative linear association. 
@@ -95,8 +95,8 @@ coefficient. This metric ranges from -1 to 1.
 
 Let's see these in practice by calculating the correlation coefficient
 for the associations that we explored above. To calculate the correlation
-coefficient for Weight and Height, we again select adult participants using 
-`filter()`. Then, we calculate the correlation inside a call to `summarise()`.
+coefficient between Weight and Height, we again select adult participants using 
+`filter()`. Then, we calculate the correlation using the `summarise()` function.
 The correlation is given by the `cor()` function, where `use = "complete.obs"`
 ensures that participants for which Weight or Height data is missing are ignored. 
 
@@ -122,6 +122,7 @@ linear association that we saw above.
 > ## Exercise
 > A) Calculate the correlation coefficient for urine flow (`UrineFlow1`)
 > and age (`Age`) in adult participants. Does this agree with the scatterplot?
+> 
 > B) Calculate the correlation coefficient for FEV1 (`FEV1`)
 > and age (`Age`) in adult participants. Does this agree with the scatterplot?
 > > ## Solution
