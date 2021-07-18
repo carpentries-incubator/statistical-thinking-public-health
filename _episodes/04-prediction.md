@@ -7,7 +7,7 @@ objectives:
   - "Predict the mean of one variable through its association with a binary variable."
   - "Predict the mean of one variable through its association with a continuous variable."
 keypoints:
-  - "We can calculate means and confidence intervals for a continous outcome variable, grouped by a binary or continuous explanatory variable. On a small scale, this is an example of a model."
+  - "We can predict the means, and calculate confidence intervals, of a continuous outcome variable grouped by a binary or continuous explanatory variable. On a small scale, this is an example of a model."
 questions:
   - "How can the mean of a continous outcome variable be predicted with a binary explanatory variable?"
   - "How can the mean of a continous outcome variable be predicted with a continous explanatory variable?"
@@ -17,25 +17,24 @@ execises: 10
 
 
 
-In this episode we will be predicting the **mean** of one variable through its
+In this episode we will predict the **mean** of one variable using its
 linear association with another variable. In a way, this will be our first example
 of a *model*: under the assumption that the mean of one variable is associated
-with another variable, we will have the capacity to predict that mean. 
+with another variable, we will be able to predict that mean. 
 
 This episode will bring together the concepts of *mean*, *confidence interval* and
 *association*, covered in the previous episodes. Prediction through linear regression
 will then be formalised in the [next lesson](https://carpentries-incubator.github.io/simple-linear-regression-public-health).
 
-We will be referring to the variable for which we are making predictions as the 
+We will refer to the variable for which we are making predictions as the 
 *outcome* variable. The variable used to make predictions will be referred to
 as the *explanatory* variable. 
 
 ## Mean prediction using a binary explanatory variable
-We will start with using a binary explanatory variable, i.e. a variable which
-can take on one of two values. For example, we may try to predict mean
-systolic blood pressure (`BPSysAve`) by physical activity (`PhysActive`). 
-Physical activity is a binary variable in the NHANES data, as it is coded
-as "Yes" or "No". 
+We will start by using a binary explanatory variable, i.e. a variable which
+can take one of two values. For example, we can try to predict mean
+systolic blood pressure (`BPSysAve`) using physical activity (`PhysActive`). 
+Physical activity is a binary variable in the NHANES data, as it takes one of two values, "Yes" or "No".
 
 Let's first explore the association between systolic blood pressure and 
 physical activity. This can be done using a violin plot, which shows
@@ -55,12 +54,12 @@ dat %>%
 <img src="../fig/rmd-04-BPSysAve PhysActive violin plot-1.png" title="plot of chunk BPSysAve PhysActive violin plot" alt="plot of chunk BPSysAve PhysActive violin plot" width="612" style="display: block; margin: auto;" />
 
 It is hard to tell from the above plot whether the mean systolic blood pressure
-differs across physical activity. Let's calculate the means and 
+differs according to physical activity. Let's calculate the means and 
 confidence intervals. In the code below, we first remove rows with missing 
 values using `drop_na()` from the `tidyr` package. 
 We then group observations by physical
 activity using `group_by()`. We then calculate the mean, standard error and
-confidence interval bounds inside `summarise()`.
+confidence interval bounds using `summarise()`.
 
 
 ~~~
@@ -113,7 +112,7 @@ dat %>%
 <img src="../fig/rmd-04-BPSysAve PhysActive violin with mean-1.png" title="plot of chunk BPSysAve PhysActive violin with mean" alt="plot of chunk BPSysAve PhysActive violin with mean" width="612" style="display: block; margin: auto;" />
 
 On a small scale, we have created a model of *mean* systolic blood pressure
-by physical activity. Hereby we have obtained mean estimates and confidence 
+by physical activity. In doing so, we have obtained mean estimates and confidence 
 intervals for systolic blood pressure as a function of physical activity. 
 
 > ## Exercise
@@ -124,7 +123,8 @@ intervals for systolic blood pressure as a function of physical activity.
 > A) Create a violin plot of total cholesterol by smoking status.  
 > B) Calculate the mean total cholesterol by smoking status, along with the 95% confidence 
 > interval for this mean estimate.  
-> C) Overlay these mean estimates and their confidence intervals onto the violin plot.
+> C) Overlay these mean estimates and their confidence intervals onto the violin plot.   
+> D) What can you conclude about the association between total HDL cholesterol and smoking?
 > 
 > > ## Solution
 > > A) 
@@ -151,8 +151,20 @@ intervals for systolic blood pressure as a function of physical activity.
 > >     se = sd(TotChol) / sqrt(n()),
 > >     lower_CI = mean - 1.96 * se,
 > >     upper_CI = mean + 1.96 * se)
+> > means
 > > ~~~
 > > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > # A tibble: 2 x 6
+> >   SmokeNow  mean     n     se lower_CI upper_CI
+> >   <fct>    <dbl> <int>  <dbl>    <dbl>    <dbl>
+> > 1 No        5.05  1495 0.0293     5.00     5.11
+> > 2 Yes       5.06  1246 0.0329     5.00     5.13
+> > ~~~
+> > {: .output}
 > > 
 > > C) 
 > > 
@@ -170,13 +182,16 @@ intervals for systolic blood pressure as a function of physical activity.
 > > {: .language-r}
 > > 
 > > <img src="../fig/rmd-04-FEV1 smokenow violin with mean-1.png" title="plot of chunk FEV1 smokenow violin with mean" alt="plot of chunk FEV1 smokenow violin with mean" width="612" style="display: block; margin: auto;" />
+> > 
+> > D)
+> > In our data, it doesn't appear that the level of total HDL cholesterol is different between people who smoke and people who don't.
 > {: .solution}
 {: .challenge}
 
 ## Mean prediction using a continuous explanatory variable
 Now we will expand the approach learnt above to prediction using a 
 continuous explanatory variable. We will try to predict
-Weight from Height in adult participants. 
+Weight using Height of adult participants. 
 
 Let's first explore the association between Height and Weight. To make grouping
 observations easier, we will round Height to the nearest integer
@@ -196,7 +211,7 @@ dat %>%
 
 <img src="../fig/rmd-04-explore association rounded Height and Weight-1.png" title="plot of chunk explore association rounded Height and Weight" alt="plot of chunk explore association rounded Height and Weight" width="612" style="display: block; margin: auto;" />
 
-Now we can calculate the mean Weight by Height:
+Now we can calculate the mean Weight for each Height:
 
 
 ~~~
@@ -236,20 +251,20 @@ dat %>%
 
 We see that as the positive correlation coefficient suggested, mean
 Weight indeed increases with Height. The outer confidence intervals are much
-wider than the central confidence intervals, because many less observations
+wider than the central confidence intervals, because many fewer observations
 were used to estimate the outer means. There are also a few red points
-without a confidence interval, because those means were estimated with single
-observations only. 
+without a confidence interval, because those means were estimated using only a single
+observation. 
 
 > ## Exercise
 > In this exercise you will explore the association between total FEV1 (`FEV1`) and
 > age (`Age`). Ensure that you drop NAs from `FEV1` by including
-> `drop_na(FEV1)` in your piped commands. Also make sure to filter for adult
+> `drop_na(FEV1)` in your piped commands. Also, make sure to filter for adult
 > participants by including `filter(Age > 17)`.
 > 
 > A) Create a scatterplot of FEV1 as a function of age.   
 > B) Calculate the mean FEV1 by age, along with the 95% confidence 
-> interval for these mean estimates.  
+> interval for each of these mean estimates.  
 > C) Overlay these mean estimates and their confidence intervals onto the scatterplot.
 > 
 > > ## Solution
