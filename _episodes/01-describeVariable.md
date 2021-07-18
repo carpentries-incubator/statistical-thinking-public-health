@@ -29,7 +29,7 @@ Before discussing the definitions of these values, let's look at an example. The
 heights of people of the female sex in the US approximately follow a distribution 
 with a mean of 162 cm and a standard deviation of 6.89 cm. 
 The distribution is shown below. Values on the x-axis with a greater density on the
-y-axis have a higher chance of occuring. So a height of 162 cm is most likely to occur, while a height of
+y-axis have a higher chance of occurring. So a height of 162 cm is most likely to occur, while a height of
 140 cm is very unlikely to occur. 
 
 <img src="../fig/rmd-01-height density plot-1.png" title="plot of chunk height density plot" alt="plot of chunk height density plot" width="612" style="display: block; margin: auto;" />
@@ -138,8 +138,8 @@ between our sampled observations and the mean of our sample:
 
 
 ~~~
-variance <- mean( (sample$heights - meanHeight)^2 )
-variance
+varHeight <- mean( (sample$heights - meanHeight)^2 )
+varHeight
 ~~~
 {: .language-r}
 
@@ -157,7 +157,8 @@ as our original data (in this case, mmHg).
 
 
 ~~~
-sqrt(variance)
+sdHeight <- sqrt(varHeight)
+sdHeight
 ~~~
 {: .language-r}
 
@@ -226,8 +227,8 @@ sqrt(variance)
 > > 
 > > 
 > > ~~~
-> > variance <- mean( (sample$bloodPressure - meanBP)^2 )
-> > variance
+> > varBP <- mean( (sample$bloodPressure - meanBP)^2 )
+> > varBP
 > > ~~~
 > > {: .language-r}
 > > 
@@ -244,7 +245,8 @@ sqrt(variance)
 > > 
 > > 
 > > ~~~
-> > sqrt(variance)
+> > sdBP <- sqrt(varBP)
+> > sdBP
 > > ~~~
 > > {: .language-r}
 > > 

@@ -28,7 +28,7 @@ For example, below we create a scatterplot of adult Weight vs. Height.
 We subset our data (`dat`) for adult participants using `filter()`, after which
 we specify the x and y axes in `ggplot()` and make a scatterplot using
 `geom_point()`. Note that `dat` is loaded into the environment by following
-the- instructions on the 
+the instructions on the 
 [setup](https://carpentries-incubator.github.io/statistical-thinking-public-health/setup.html) page.
 
 
@@ -46,7 +46,7 @@ dat %>%
 We see that on average, higher Weights are associated with higher Heights. 
 This is an example of a *positive* linear association, as we see an increase
 along the y-axis as the values on the x-axis increase.
-The linear association suggests that we could use Weights to predict Heights. 
+The linear association suggests that we could use Heights to predict Weights. 
 
 In the exercise below you will explore examples of a negative linear association
 and an absence of a linear association.

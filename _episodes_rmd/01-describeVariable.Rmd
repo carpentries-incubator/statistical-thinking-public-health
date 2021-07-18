@@ -34,7 +34,7 @@ Before discussing the definitions of these values, let's look at an example. The
 heights of people of the female sex in the US approximately follow a distribution 
 with a mean of 162 cm and a standard deviation of 6.89 cm. 
 The distribution is shown below. Values on the x-axis with a greater density on the
-y-axis have a higher chance of occuring. So a height of 162 cm is most likely to occur, while a height of
+y-axis have a higher chance of occurring. So a height of 162 cm is most likely to occur, while a height of
 140 cm is very unlikely to occur. 
 
 ```{r height density plot, echo = FALSE}
@@ -138,8 +138,8 @@ We can also calculate the variance as the mean of the squared differences
 between our sampled observations and the mean of our sample:
 
 ```{r variance female heights}
-variance <- mean( (sample$heights - meanHeight)^2 )
-variance
+varHeight <- mean( (sample$heights - meanHeight)^2 )
+varHeight
 ```
 
 Finally, we calculate the standard deviation as the square root of the variance.
@@ -148,7 +148,8 @@ deviation to have a measure of spread in our distribution, in the same units
 as our original data (in this case, mmHg).
 
 ```{r square root female heights}
-sqrt(variance)
+sdHeight <- sqrt(varHeight)
+sdHeight
 ```
 
 
@@ -206,8 +207,8 @@ sqrt(variance)
 > > observed values. This can be calculated as follows:
 > > 
 > > ```{r estimate variance blood pressure}
-> > variance <- mean( (sample$bloodPressure - meanBP)^2 )
-> > variance
+> > varBP <- mean( (sample$bloodPressure - meanBP)^2 )
+> > varBP
 > > ```
 > > 
 > > D) The standard deviation equals the square root of the variance. 
@@ -215,7 +216,8 @@ sqrt(variance)
 > > values and the mean systolic blood pressure. The square root can be calculated using `sqrt()`. 
 > > 
 > > ```{r estimate standard deviation blood pressure}
-> > sqrt(variance)
+> > sdBP <- sqrt(varBP)
+> > sdBP
 > > ```
 > {: .solution}
 {: .challenge}
