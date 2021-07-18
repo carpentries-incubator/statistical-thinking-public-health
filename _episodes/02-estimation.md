@@ -33,13 +33,12 @@ This will allow us to understand the meaning of the 95% confidence interval.
 In the previous episode, we learnt that the standard deviation is a measure of the 
 expected difference between a value in the distribution and the mean of
 the distribution. In this episode we will work with a related quantity, called
-the *standard error*. The standard error quantifies the average difference
-between a sample mean and the population mean. 
+the *standard error*. The standard error quantifies the spread of sample means
+around the population mean. 
 
 For example, let's say we collected 1000 observations of female heights in
 the US, to estimate the mean height. The standard error of this estimate in this case is 
-0.22 cm. Therefore, on average, we expect
-means estimated in this way to differ from the population mean by 0.22 cm.
+0.22 cm. 
 
 The standard error is calculated using the standard deviation and the sample size:
 
@@ -50,6 +49,9 @@ as $\text{se}(y) = 6.89 / \sqrt{1000} \approx 0.22$ cm.
 
 Notice that with greater $n$, the standard error will be smaller. This makes
 intuitive sense: with greater sample sizes come more precise estimates of the mean.
+
+One of the reasons we calculate the standard error is that it allows us to
+calculate the 95% confidence interval, as we will do in the next section. 
 
 ## The 95% confidence interval
 We use the standard error to calculate the 95% confidence interval. 
@@ -90,9 +92,9 @@ sample <- tibble(heights = rnorm(1000, mean = 162, sd = 6.89))
 
 meanHeight <- mean(sample$heights)
 
-stdErr <- 6.89/sqrt(1000)
+seHeight <- 6.89/sqrt(1000)
 
-CI <- c(meanHeight - 1.96 * stdErr, meanHeight + 1.96 * stdErr)
+CI <- c(meanHeight - 1.96 * seHeight, meanHeight + 1.96 * seHeight)
 CI
 ~~~
 {: .language-r}
@@ -132,8 +134,8 @@ that do not capture the population mean.
 > > and the population mean to equal 0.22 mmHg, on average. 
 > > 
 > > ~~~
-> > stdErr <- 10/sqrt(2000)
-> > stdErr
+> > seBP <- 10/sqrt(2000)
+> > seBP
 > > ~~~
 > > {: .language-r}
 > > 
@@ -155,7 +157,7 @@ that do not capture the population mean.
 > > sample <- tibble(bloodPressure = rnorm(1000, mean = 112, sd = 10))
 > > meanBP <- mean(sample$bloodPressure)
 > > 
-> > CI <- c(meanBP - 1.96 * stdErr, meanBP + 1.96 * stdErr)
+> > CI <- c(meanBP - 1.96 * seBP, meanBP + 1.96 * seBP)
 > > CI
 > > ~~~
 > > {: .language-r}
@@ -198,7 +200,7 @@ Then, we calculate the standard error using the standard deviation and the sampl
 
 
 ~~~
-stdErr <- 6.89/sqrt(1000)
+seHeight <- 6.89/sqrt(1000)
 ~~~
 {: .language-r}
 
@@ -215,8 +217,8 @@ for(i in 1:100){
  means <- means %>%
    add_row(sampleID = i,
            meanHeight = mean(sample$heights),
-           lower_CI = mean(sample$heights) - 1.96 * stdErr,
-           upper_CI = mean(sample$heights) + 1.96 * stdErr)
+           lower_CI = mean(sample$heights) - 1.96 * seHeight,
+           upper_CI = mean(sample$heights) + 1.96 * seHeight)
 }
 ~~~
 {: .language-r}
@@ -286,18 +288,55 @@ intervals will not capture the population mean.
 > >                 lower_CI = c(),
 > >                 upper_CI = c())
 > > 
-> > stdErr <- 10/sqrt(2000)
+> > seBP <- 10/sqrt(2000)
 > > 
 > > for(i in 1:100){
 > >   sample <- tibble(bloodPressure = rnorm(2000, mean = 112, sd = 10))
 > >   means <- means %>%
 > >     add_row(sampleID = i,
-> >             meanBP = mean(sample$bloodPressure),
-> >             lower_CI = mean(sample$bloodPressure) - 1.96 * stdErr,
-> >             upper_CI = mean(sample$bloodPressure) + 1.96 * stdErr)
+> >             meanBP = mean(sample$seBP),
+> >             lower_CI = mean(sample$seBP) - 1.96 * stdErr,
+> >             upper_CI = mean(sample$seBP) + 1.96 * stdErr)
 > > }
 > > ~~~
 > > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > Warning: Unknown or uninitialised column: `seBP`.
+> > ~~~
+> > {: .warning}
+> > 
+> > 
+> > 
+> > ~~~
+> > Warning in mean.default(sample$seBP): argument is not numeric or logical:
+> > returning NA
+> > ~~~
+> > {: .warning}
+> > 
+> > 
+> > 
+> > ~~~
+> > Warning: Unknown or uninitialised column: `seBP`.
+> > ~~~
+> > {: .warning}
+> > 
+> > 
+> > 
+> > ~~~
+> > Warning in mean.default(sample$seBP): argument is not numeric or logical:
+> > returning NA
+> > ~~~
+> > {: .warning}
+> > 
+> > 
+> > 
+> > ~~~
+> > Error in eval_tidy(xs[[j]], mask): object 'stdErr' not found
+> > ~~~
+> > {: .error}
 > > 
 > > B)
 > > 
