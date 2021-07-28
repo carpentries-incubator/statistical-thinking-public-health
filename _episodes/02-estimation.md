@@ -189,10 +189,10 @@ bound of the confidence intervals.
 
 
 ~~~
-means <- tibble(sampleID = c(),
-               meanHeight = c(),
-               lower_CI = c(),
-               upper_CI = c())
+means <- tibble(sampleID = numeric(),
+               meanHeight = numeric(),
+               lower_CI = numeric(),
+               upper_CI = numeric())
 ~~~
 {: .language-r}
 
@@ -283,60 +283,26 @@ intervals will not capture the population mean.
 > > 
 > > 
 > > ~~~
-> > means <- tibble(sampleID = c(),
-> >                 meanBP = c(),
-> >                 lower_CI = c(),
-> >                 upper_CI = c())
+> > means <- tibble(sampleID = numeric(),
+> >                 meanBP = numeric(),
+> >                 lower_CI = numeric(),
+> >                 upper_CI = numeric())
 > > 
 > > seBP <- 10/sqrt(2000)
 > > 
 > > for(i in 1:100){
-> >   sample <- tibble(bloodPressure = rnorm(2000, mean = 112, sd = 10))
+> >   
+> >   sample <- tibble(bloodPressure = rnorm(2000, mean = 112,
+> >                                          sd = 10))
+> >   
 > >   means <- means %>%
 > >     add_row(sampleID = i,
-> >             meanBP = mean(sample$seBP),
-> >             lower_CI = mean(sample$seBP) - 1.96 * stdErr,
-> >             upper_CI = mean(sample$seBP) + 1.96 * stdErr)
+> >             meanBP = mean(sample$bloodPressure),
+> >             lower_CI = mean(sample$bloodPressure) - 1.96 * seBP,
+> >             upper_CI = mean(sample$bloodPressure) + 1.96 * seBP)
 > > }
 > > ~~~
 > > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Warning: Unknown or uninitialised column: `seBP`.
-> > ~~~
-> > {: .warning}
-> > 
-> > 
-> > 
-> > ~~~
-> > Warning in mean.default(sample$seBP): argument is not numeric or logical:
-> > returning NA
-> > ~~~
-> > {: .warning}
-> > 
-> > 
-> > 
-> > ~~~
-> > Warning: Unknown or uninitialised column: `seBP`.
-> > ~~~
-> > {: .warning}
-> > 
-> > 
-> > 
-> > ~~~
-> > Warning in mean.default(sample$seBP): argument is not numeric or logical:
-> > returning NA
-> > ~~~
-> > {: .warning}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in eval_tidy(xs[[j]], mask): object 'stdErr' not found
-> > ~~~
-> > {: .error}
 > > 
 > > B)
 > > 

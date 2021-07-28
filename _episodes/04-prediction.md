@@ -80,7 +80,7 @@ means
 
 
 ~~~
-# A tibble: 2 x 6
+# A tibble: 2 × 6
   PhysActive  mean     n    se lower_CI upper_CI
   <fct>      <dbl> <int> <dbl>    <dbl>    <dbl>
 1 No          123.  3191 0.340     122.     124.
@@ -158,7 +158,7 @@ intervals for systolic blood pressure as a function of physical activity.
 > > 
 > > 
 > > ~~~
-> > # A tibble: 2 x 6
+> > # A tibble: 2 × 6
 > >   SmokeNow  mean     n     se lower_CI upper_CI
 > >   <fct>    <dbl> <int>  <dbl>    <dbl>    <dbl>
 > > 1 No        5.05  1495 0.0293     5.00     5.11
