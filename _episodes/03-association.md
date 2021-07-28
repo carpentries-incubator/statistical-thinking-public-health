@@ -55,7 +55,7 @@ and an absence of a linear association.
 > A) Create a scatterplot of urine flow (`UrineFlow1`) on the y-axis and 
 > age (`Age`) on the x-axis for adult participants. How would you describe the association between
 > these variables?  
-> B) Create a scatterplot of pulse (`FEV1`) on the y-axis and 
+> B) Create a scatterplot of FEV1 (`FEV1`) on the y-axis and 
 > age (`Age`) on the x-axis for adult participants. How would you describe the association between
 > these variables?
 > > ## Solution
