@@ -4,12 +4,10 @@
 source: Rmd
 title: "Predicting means using linear associations"
 objectives:
-  - "Predict the mean of one variable through its association with a binary variable."
   - "Predict the mean of one variable through its association with a continuous variable."
 keypoints:
-  - "We can predict the means, and calculate confidence intervals, of a continuous outcome variable grouped by a binary or continuous explanatory variable. On a small scale, this is an example of a model."
+  - "We can predict the means, and calculate confidence intervals, of a continuous outcome variable grouped by a continuous explanatory variable. On a small scale, this is an example of a model."
 questions:
-  - "How can the mean of a continous outcome variable be predicted with a binary explanatory variable?"
   - "How can the mean of a continous outcome variable be predicted with a continous explanatory variable?"
 teaching: 10
 execises: 10
@@ -30,171 +28,13 @@ We will refer to the variable for which we are making predictions as the
 *outcome* variable. The variable used to make predictions will be referred to
 as the *explanatory* variable. 
 
-## Mean prediction using a binary explanatory variable
-We will start by using a binary explanatory variable, i.e. a variable which
-can take one of two values. For example, we can try to predict mean
-systolic blood pressure (`BPSysAve`) using physical activity (`PhysActive`). 
-Physical activity is a binary variable in the NHANES data, as it takes one of two values, "Yes" or "No".
-
-Let's first explore the association between systolic blood pressure and 
-physical activity. This can be done using a violin plot, which shows
-the density distribution of systolic blood pressure by physical activity.
-
-
-~~~
-dat %>%
-  drop_na(BPSysAve, PhysActive) %>%
-  ggplot(aes(x = PhysActive, y = BPSysAve)) +
-  geom_violin() +
-  ylab("Systolic blood pressure") +
-  xlab("Physically active")
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-04-BPSysAve PhysActive violin plot-1.png" title="plot of chunk BPSysAve PhysActive violin plot" alt="plot of chunk BPSysAve PhysActive violin plot" width="612" style="display: block; margin: auto;" />
-
-It is hard to tell from the above plot whether the mean systolic blood pressure
-differs according to physical activity. Let's calculate the means and 
-confidence intervals. In the code below, we first remove rows with missing 
-values using `drop_na()` from the `tidyr` package. 
-We then group observations by physical
-activity using `group_by()`. We then calculate the mean, standard error and
-confidence interval bounds using `summarise()`.
-
-
-~~~
-means <- dat %>%
-  drop_na(c(BPSysAve, PhysActive)) %>%
-  group_by(PhysActive) %>%
-  summarise(
-    mean = mean(BPSysAve),
-    n = n(),
-    se = sd(BPSysAve) / sqrt(n()),
-    lower_CI = mean - 1.96 * se,
-    upper_CI = mean + 1.96 * se)
-
-means
-~~~
-{: .language-r}
-
-
-
-~~~
-# A tibble: 2 x 6
-  PhysActive  mean     n    se lower_CI upper_CI
-  <fct>      <dbl> <int> <dbl>    <dbl>    <dbl>
-1 No          123.  3191 0.340     122.     124.
-2 Yes         118.  3590 0.274     117.     118.
-~~~
-{: .output}
-It appears that the mean estimate for systolic blood pressure is approximately 
-5 units lower for physically active participants than for non-physically
-active participants. 
-
-Now we can overlay the mean estimates and their confidence intervals onto
-the violin plot. First the means are overlayed using `geom_point()`. Then 
-the confidence intervals are overlayed using `geom_errorbar()`.
-
-
-~~~
-dat %>%
-  drop_na(c(BPSysAve, PhysActive)) %>%
-  ggplot(aes(x = PhysActive, y = BPSysAve)) +
-  geom_violin() +
-  geom_point(data = means, aes(x = PhysActive, y = mean)) +
-  geom_errorbar(data = means, aes(x = PhysActive, y = mean, ymin = lower_CI, ymax = upper_CI),
-                width = 0.2) +
-  ylab("Systolic blood pressure") +
-  xlab("Physically active")
-~~~
-{: .language-r}
-
-<img src="../fig/rmd-04-BPSysAve PhysActive violin with mean-1.png" title="plot of chunk BPSysAve PhysActive violin with mean" alt="plot of chunk BPSysAve PhysActive violin with mean" width="612" style="display: block; margin: auto;" />
-
-On a small scale, we have created a model of *mean* systolic blood pressure
-by physical activity. In doing so, we have obtained mean estimates and confidence 
-intervals for systolic blood pressure as a function of physical activity. 
-
-> ## Exercise
-> In this exercise you will explore the association between total HDL cholesterol (`TotChol`) and
-> smoking (`SmokeNow`). Ensure that you drop NAs from `SmokeNow` and `TotChol`, by including
-> `drop_na(SmokeNow, TotChol)` in your piped commands.
-> 
-> A) Create a violin plot of total cholesterol by smoking status.  
-> B) Calculate the mean total cholesterol by smoking status, along with the 95% confidence 
-> interval for this mean estimate.  
-> C) Overlay these mean estimates and their confidence intervals onto the violin plot.   
-> D) What can you conclude about the association between total HDL cholesterol and smoking?
-> 
-> > ## Solution
-> > A) 
-> > 
-> > ~~~
-> > dat %>%
-> >   drop_na(SmokeNow, TotChol) %>%
-> >   ggplot(aes(x = SmokeNow, y = TotChol)) +
-> >   geom_violin()
-> > ~~~
-> > {: .language-r}
-> > 
-> > <img src="../fig/rmd-04-TotChol smokenow violin plot-1.png" title="plot of chunk TotChol smokenow violin plot" alt="plot of chunk TotChol smokenow violin plot" width="612" style="display: block; margin: auto;" />
-> > 
-> > B) 
-> > 
-> > ~~~
-> > means <- dat %>%
-> >   drop_na(c(SmokeNow, TotChol)) %>%
-> >   group_by(SmokeNow) %>%
-> >   summarise(
-> >     mean = mean(TotChol),
-> >     n = n(),
-> >     se = sd(TotChol) / sqrt(n()),
-> >     lower_CI = mean - 1.96 * se,
-> >     upper_CI = mean + 1.96 * se)
-> > means
-> > ~~~
-> > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > # A tibble: 2 x 6
-> >   SmokeNow  mean     n     se lower_CI upper_CI
-> >   <fct>    <dbl> <int>  <dbl>    <dbl>    <dbl>
-> > 1 No        5.05  1495 0.0293     5.00     5.11
-> > 2 Yes       5.06  1246 0.0329     5.00     5.13
-> > ~~~
-> > {: .output}
-> > 
-> > C) 
-> > 
-> > ~~~
-> > dat %>%
-> >   drop_na(c(SmokeNow, TotChol)) %>%
-> >   ggplot(aes(x = SmokeNow, y = TotChol)) +
-> >   geom_violin() +
-> >   geom_point(data = means, aes(x = SmokeNow, y = mean)) +
-> >   geom_errorbar(data = means, aes(x = SmokeNow, y = mean, ymin = lower_CI, ymax = upper_CI),
-> >                 width = 0.2) +
-> >   ylab("Total HDL cholesterol") +
-> >   xlab("Currently smoking")
-> > ~~~
-> > {: .language-r}
-> > 
-> > <img src="../fig/rmd-04-FEV1 smokenow violin with mean-1.png" title="plot of chunk FEV1 smokenow violin with mean" alt="plot of chunk FEV1 smokenow violin with mean" width="612" style="display: block; margin: auto;" />
-> > 
-> > D)
-> > In our data, it doesn't appear that the level of total HDL cholesterol is different between people who smoke and people who don't.
-> {: .solution}
-{: .challenge}
-
 ## Mean prediction using a continuous explanatory variable
-Now we will expand the approach learnt above to prediction using a 
-continuous explanatory variable. We will try to predict
-Weight using Height of adult participants. 
+We will predict the mean of one continuous outcome variable using a 
+continuous explanatory variable. Specifically, we will try to predict
+mean Weight using Height of adult participants. 
 
-Let's first explore the association between Height and Weight. To make grouping
-observations easier, we will round Height to the nearest integer
+Let's first explore the association between Height and Weight. To make predicting easier,
+we will group observations together: we will round Height to the nearest integer
 before plotting and performing downstream calculations. We will round
 using `mutate()`, as shown in the plotting command below.
 
@@ -211,7 +51,13 @@ dat %>%
 
 <img src="../fig/rmd-04-explore association rounded Height and Weight-1.png" title="plot of chunk explore association rounded Height and Weight" alt="plot of chunk explore association rounded Height and Weight" width="612" style="display: block; margin: auto;" />
 
-Now we can calculate the mean Weight for each Height:
+Now we can calculate the mean Weight for each Height. In the code below, 
+we first remove rows with missing 
+values using `drop_na()` from the `tidyr` package. 
+We then filter for adult participants using `filter()` and round Heights using
+`mutate()`. Next, we group observations by rounded height
+using `group_by()`. We finally calculate the mean, standard error and
+confidence interval bounds using `summarise()`.
 
 
 ~~~
@@ -231,7 +77,8 @@ means <- dat %>%
 {: .language-r}
 
 Finally, we can overlay these means and confidence intervals onto the 
-scatterplot. 
+scatterplot. First the means are overlayed using `geom_point()`. 
+Then the confidence intervals are overlayed using `geom_errorbar()`.
 
 
 ~~~
