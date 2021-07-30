@@ -13,7 +13,7 @@ questions:
   - "How can we visualise the linear association between two variables?"
   - "How can we quantify the size of a linear association?"
 teaching: 10
-execises: 10
+exercises: 10
 ---
 
 

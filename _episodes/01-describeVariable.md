@@ -11,8 +11,8 @@ keypoints:
   - The standard deviation is the square root of the variance. It measures the spread of observations around the mean, in units of the original data. 
 questions:
   - How are the mean, variance and standard deviation calculated and interpreted?
-teaching: 10
-execises: 10
+teaching: 15
+exercises: 20
 ---
 
 

@@ -12,8 +12,8 @@ keypoints:
 questions:
   - "What are the definitions of the standard error and the 95% confidence interval?"
   - "How is the 95% confidence interval interpreted in practice?"
-teaching: 10
-execises: 10
+teaching: 20
+exercises: 40
 ---
 
 

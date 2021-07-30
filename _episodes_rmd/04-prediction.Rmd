@@ -7,8 +7,8 @@ keypoints:
   - "We can predict the means, and calculate confidence intervals, of a continuous outcome variable grouped by a continuous explanatory variable. On a small scale, this is an example of a model."
 questions:
   - "How can the mean of a continous outcome variable be predicted with a continous explanatory variable?"
-teaching: 10
-execises: 10
+teaching: 15
+exercises: 20
 ---
 
 ```{r, include=FALSE}
