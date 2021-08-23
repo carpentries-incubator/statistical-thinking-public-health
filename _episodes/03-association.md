@@ -98,7 +98,7 @@ for the associations that we explored above. To calculate the correlation
 coefficient between Weight and Height, we again select adult participants using 
 `filter()`. Then, we calculate the correlation using the `summarise()` function.
 The correlation is given by the `cor()` function, where `use = "complete.obs"`
-ensures that participants for which Weight or Height data is missing are ignored. 
+ensures that participants for whom Weight or Height data is missing are ignored. 
 
 
 ~~~
