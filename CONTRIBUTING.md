@@ -36,7 +36,7 @@ and to meet some of our community members.
     but do not know how to use Git,
     you can report problems or suggest improvements by [creating an issue][issues].
     This allows us to assign the item to someone
-    and to respond to it in a threaded discussion.
+    and to respond to it in a threaded discussion. 
 
 3.  If you are comfortable with Git,
     and would like to add or change material,
@@ -46,8 +46,8 @@ and to meet some of our community members.
 ## Where to Contribute
 
 1.  If you wish to change this lesson,
-    please work in <https://github.com/swcarpentry/FIXME>,
-    which can be viewed at <https://swcarpentry.github.io/FIXME>.
+    please work in <https://github.com/carpentries-incubator/statistical-thinking-public-health>,
+    which can be viewed at <https://carpentries-incubator.github.io/statistical-thinking-public-health>.
 
 2.  If you wish to change the example lesson,
     please work in <https://github.com/carpentries/lesson-example>,
