@@ -7,7 +7,7 @@ objectives:
   - "Explore the difference between a population parameter and sample estimates by simulating data from a normal distribution."
   - "Define the 95% confidence interval by simulating data from a normal distribution."
 keypoints:
-  - "Sample means are expected to differ from the population mean, on average, by the standard error."
+  - "Sample means are expected to differ from the population mean. We quantify the spread of estimated means around the population mean using the standard error."
   - "95% of 95% confidence intervals are expected to capture the population mean. In practice, this means we are fairly confident that a 95% confidence interval will contain the population mean, but we do not know for sure."
 questions:
   - "What are the definitions of the standard error and the 95% confidence interval?"
