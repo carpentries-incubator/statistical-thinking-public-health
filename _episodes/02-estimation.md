@@ -270,7 +270,8 @@ intervals will not capture the population mean.
 > interval whether the original mean of 112 mmHg was captured.  
 > C) Plot the mean values and their 95% confidence intervals. Add a line to show the population mean. How
 > many of your 95% confidence intervals do not contain the true population 
-> mean of 112 mmHg? 
+> mean of 112 mmHg?  
+> D) Increase or decrease the number of observations sampled per data set in part A. Then, run through parts A, B and C again. What happened to the width of the confidence intervals? Did the interpretation of the confidence intervals change in any way?
 > 
 > > ## Solution
 > > Throughout this solution, your results will differ slightly from the ones
@@ -333,5 +334,9 @@ intervals will not capture the population mean.
 > > 
 > > <img src="../fig/rmd-02-plot blood pressure confidence intervals-1.png" title="plot of chunk plot blood pressure confidence intervals" alt="plot of chunk plot blood pressure confidence intervals" width="612" style="display: block; margin: auto;" />
 > > 
+> > D) Increasing the number of observations per data set decreases the width of confidence intervals. 
+> > Decreasing the number of observations per data set has the opposite effect. 
+> > However, the interpretation of the confidence intervals remains the same: 
+> > we still have on average 5 out of 100 intervals that do not capture the true population mean. 
 > {: .solution}
 {: .challenge}
