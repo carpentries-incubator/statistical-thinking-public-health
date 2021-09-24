@@ -35,8 +35,13 @@ mean Weight using Height of adult participants.
 
 Let's first explore the association between Height and Weight. To make predicting easier,
 we will group observations together: we will round Height to the nearest integer
-before plotting and performing downstream calculations. We will round
-using `mutate()`, as shown in the plotting command below.
+before plotting and performing downstream calculations. 
+
+* First, we drop NAs in Weight and Height using `drop_na()`. When we later round Height and 
+calculate the means of Weight, this will prevent R from returning errors due to NAs. 
+* Then, we restrict our plot to data from adult participants using `filter()`. Since the relationship between Height and Weight differs between children and adults, we limit our analysis to the adult data. 
+* Next, we round Heights using `mutate()`. 
+* Finally, we create a scatterplot using `ggplot()` and `geom_point()`. 
 
 
 ~~~
