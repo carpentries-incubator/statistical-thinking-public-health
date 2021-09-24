@@ -154,7 +154,7 @@ that do not capture the population mean.
 > > are not expected to contain the true population mean).
 > > 
 > > ~~~
-> > sample <- tibble(bloodPressure = rnorm(1000, mean = 112, sd = 10))
+> > sample <- tibble(bloodPressure = rnorm(2000, mean = 112, sd = 10))
 > > meanBP <- mean(sample$bloodPressure)
 > > 
 > > CI <- c(meanBP - 1.96 * seBP, meanBP + 1.96 * seBP)
@@ -165,13 +165,14 @@ that do not capture the population mean.
 > > 
 > > 
 > > ~~~
-> > [1] 111.1055 111.9821
+> > [1] 111.3961 112.2727
 > > ~~~
 > > {: .output}
-> > The confidence interval has lower bound 111.1055 and upper bound
-> > 111.9821. The interval does not capture the population mean of 
-> > 112 and therefore belongs to the 5% of 95% CIs that do not capture
-> > the population mean. 
+> > The confidence interval has lower bound 111.4 and upper bound
+> > 112.27. The interval captures the population mean of 
+> > 112 and therefore belongs to the 95% of 95% CIs that do capture
+> > the population mean. If your CI does not cover 112, then your CI
+> > belongs to the 5% of 95% CIs that do not capture the population mean. 
 > {: .solution}
 {: .challenge}
 
