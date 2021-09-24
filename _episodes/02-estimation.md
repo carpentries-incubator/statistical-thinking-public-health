@@ -78,8 +78,10 @@ we cannot know for sure.
 
 Let's take a look at how we can calculate the 95% confidence interval in R.
 First, we sample 1000 observations of female heights and calculate the mean, 
-as in the previous episode. Then, we calculate the standard error as the
-standard deviation divided by the square root of the sample size.
+as in the previous episode. Then, we calculate the standard error as the standard
+deviation divided by the square root of the sample size. Note the use of the 
+`sd()` function, which returns the standard deviation 
+(rather than the manual calculation used in the previous episode).
 Finally, the 95% confidence interval is given by the mean +/- 1.96
 times the standard error. Note that your CI will differ slightly from the
 one shown below, as `rnorm()` obtains random samples. 
@@ -92,7 +94,7 @@ sample <- tibble(heights = rnorm(1000, mean = 162, sd = 6.89))
 
 meanHeight <- mean(sample$heights)
 
-seHeight <- 6.89/sqrt(1000)
+seHeight <- sd(sample$heights)/sqrt(1000)
 
 CI <- c(meanHeight - 1.96 * seHeight, meanHeight + 1.96 * seHeight)
 CI
@@ -102,7 +104,7 @@ CI
 
 
 ~~~
-[1] 161.7898 162.6439
+[1] 161.7944 162.6394
 ~~~
 {: .output}
 
@@ -115,11 +117,8 @@ that do not capture the population mean.
 
 > ## Exercise
 > A) Given the distribution of systolic blood pressure, with a mean of 112 mmHg
-> and a standard deviation of 10 mmHg, calculate the standard error of a mean
-> estimate coming from a sample of 2000 observations. How do we interpret this
-> value?  
-> B) Using a random sample of 2000 observations from this distribution, estimate
-> the mean systolic blood pressure and provide a 95% confidence interval for this
+> and a standard deviation of 10 mmHg, obtain a random sample of 2000 observations.  
+> B) Estimate the mean systolic blood pressure and provide a 95% confidence interval for this
 > estimate. How do we interpret this interval?
 > 
 > > ## Solution
@@ -129,33 +128,18 @@ that do not capture the population mean.
 > > neighbour to compare results! If you are working through this episode
 > > independently, try running your code again to see how the results differ.
 > > 
-> > A) The standard error equals the standard deviation divided by the square root
-> > of the sample size. We expect the difference between the estimated mean
-> > and the population mean to equal 0.22 mmHg, on average. 
-> > 
-> > ~~~
-> > seBP <- 10/sqrt(2000)
-> > seBP
-> > ~~~
-> > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > [1] 0.2236068
-> > ~~~
-> > {: .output}
-> > 
-> > B) We simulate using `rnorm()`, calculate the mean using `mean()` and calculate
-> > the confidence interval as the mean +- 1.96 times the standard error. Since
-> > 95% of 95% confidence intervals are expected to contain the true population mean, we are
-> > fairly confident that the interval that we have calculated contains the true
-> > population mean (but we are not sure, as 5% of 95% confidence intervals 
-> > are not expected to contain the true population mean).
+> > A)   
 > > 
 > > ~~~
 > > sample <- tibble(bloodPressure = rnorm(2000, mean = 112, sd = 10))
+> > ~~~
+> > {: .language-r}
+> > 
+> > B) 
+> > 
+> > ~~~
 > > meanBP <- mean(sample$bloodPressure)
+> > seBP <- sd(sample$bloodPressure)/sqrt(2000)
 > > 
 > > CI <- c(meanBP - 1.96 * seBP, meanBP + 1.96 * seBP)
 > > CI
@@ -165,7 +149,7 @@ that do not capture the population mean.
 > > 
 > > 
 > > ~~~
-> > [1] 111.3961 112.2727
+> > [1] 111.3997 112.2691
 > > ~~~
 > > {: .output}
 > > The confidence interval has lower bound 111.4 and upper bound
@@ -183,8 +167,8 @@ action, by simulating 100 data sets of 1000 female heights.
 
 First, we create a tibble for our means and confidence intervals.
 We name this tibble `means` and create empty columns for the sample IDs,
-mean heights, the lower bound of the confidence intervals and the upper
-bound of the confidence intervals. 
+mean heights, standard errors, the lower bound of the confidence intervals 
+and the upper bound of the confidence intervals. 
 
 
 
@@ -192,23 +176,16 @@ bound of the confidence intervals.
 ~~~
 means <- tibble(sampleID = numeric(),
                meanHeight = numeric(),
+               seHeight = numeric(),
                lower_CI = numeric(),
                upper_CI = numeric())
-~~~
-{: .language-r}
-
-Then, we calculate the standard error using the standard deviation and the sample size.
-
-
-~~~
-seHeight <- 6.89/sqrt(1000)
 ~~~
 {: .language-r}
 
 We simulate the Heights data using a `for` loop. This gives us 100 iterations,
 in which samples are drawn as before using `rnorm()`. For each sample, 
 we add a row to our `means` tibble using `add_row()`. We include an ID for the
-sample, the mean Height and the bounds of the 95% confidence interval. 
+sample, the mean Height, the standard error and the bounds of the 95% confidence interval. 
 
 
 ~~~
@@ -218,8 +195,9 @@ for(i in 1:100){
  means <- means %>%
    add_row(sampleID = i,
            meanHeight = mean(sample$heights),
-           lower_CI = mean(sample$heights) - 1.96 * seHeight,
-           upper_CI = mean(sample$heights) + 1.96 * seHeight)
+           seHeight = sd(sample$heights)/sqrt(1000),
+           lower_CI = meanHeight - 1.96 * seHeight,
+           upper_CI = meanHeight + 1.96 * seHeight)
 }
 ~~~
 {: .language-r}
@@ -264,8 +242,8 @@ intervals will not capture the population mean.
 > ## Exercise
 > A) Given the distribution of systolic blood pressure, with a mean of 112 mmHg
 > and a standard deviation of 10 mmHg, simulate 100 data sets of 2000 observations
-> each. For each sample, store the sample ID, mean systolic blood pressure and the 
-> 95% confidence interval in a tibble.  
+> each. For each sample, store the sample ID, mean systolic blood pressure,
+> the standard error and the 95% confidence interval in a tibble.  
 > B) Create an extra column in the tibble, indicating for each confidence
 > interval whether the original mean of 112 mmHg was captured.  
 > C) Plot the mean values and their 95% confidence intervals. Add a line to show the population mean. How
@@ -287,10 +265,10 @@ intervals will not capture the population mean.
 > > ~~~
 > > means <- tibble(sampleID = numeric(),
 > >                 meanBP = numeric(),
+> >                 seBP = numeric(),
 > >                 lower_CI = numeric(),
 > >                 upper_CI = numeric())
 > > 
-> > seBP <- 10/sqrt(2000)
 > > 
 > > for(i in 1:100){
 > >   
@@ -300,8 +278,9 @@ intervals will not capture the population mean.
 > >   means <- means %>%
 > >     add_row(sampleID = i,
 > >             meanBP = mean(sample$bloodPressure),
-> >             lower_CI = mean(sample$bloodPressure) - 1.96 * seBP,
-> >             upper_CI = mean(sample$bloodPressure) + 1.96 * seBP)
+> >             seBP = sd(sample$bloodPressure)/sqrt(2000),
+> >             lower_CI = meanBP - 1.96 * seBP,
+> >             upper_CI = meanBP + 1.96 * seBP)
 > > }
 > > ~~~
 > > {: .language-r}
