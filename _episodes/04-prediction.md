@@ -25,12 +25,12 @@ This episode will bring together the concepts of *mean*, *confidence interval* a
 will then be formalised in the [next lesson](https://carpentries-incubator.github.io/simple-linear-regression-public-health).
 
 We will refer to the variable for which we are making predictions as the 
-*outcome* variable. The variable used to make predictions will be referred to
-as the *explanatory* variable. 
+*outcome* or *dependent* variable. The variable used to make predictions will be referred to
+as the *explanatory* or *predictor* variable. 
 
 ## Mean prediction using a continuous explanatory variable
 We will predict the mean of one continuous outcome variable using a 
-continuous explanatory variable. Specifically, we will try to predict
+continuous explanatory variable. In our example, we will try to predict
 mean Weight using Height of adult participants. 
 
 Let's first explore the association between Height and Weight. To make predicting easier,
