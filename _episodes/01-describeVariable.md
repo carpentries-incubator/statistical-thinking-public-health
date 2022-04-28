@@ -37,30 +37,36 @@ y-axis have a higher chance of occurring. So a height of 162 cm is most likely t
 You may recognise the shape of the above distribution. It is an example of a
 *normal* distribution. 
 
-Let's say we sampled 1000 observations of female height. 
+Let's say that we sampled 1000 observations of female height through a survey. 
 We can refer to these observations as $y_i$, with $i = 1, \dots, 1000$. 
 The distribution of female heights has a few properties of interest, which we can estimate using our sample.
 
 ## The mean
-The *mean* of the distribution is the average of all the values that make up that distribution. In the case of female heights in the US, the mean is 162 cm. Therefore, the average height of a US female is 162 cm. We also expect the mean of our sample to equal 162 cm.
+The *population mean* is the average of all the values that make up a distribution. 
+In the case of female heights in the US, the population mean is 162 cm. Therefore, the average height of a US female is 162 cm.
 
-The mean is also known as the *expectation* of a variable, $E()$. The expectation of female heights is expressed as $E(y)$:
+After obtaining our sample of 1000 observations from the population, we may be interested in the *sample mean*.
+We expect our sample mean to equal the population mean, with a sufficiently large sample.
+The sample mean is expressed as $\bar{y}$:
 
-$$E(y) = \frac{1}{n} \left( \sum_{i=1}^n y_{i} \right)$$
+$$\bar{y} = \frac{1}{n} \left( \sum_{i=1}^n y_{i} \right)$$
 
 where $n = 1000$.
+
 
 ## The variance
 The *variance* is the average *squared* difference between values in the distribution 
 and the mean of the distribution. This is a mouthful, so it is useful to look
-at the equation of variance. The variance is expressed as $V()$:  
+at the equation of variance. 
 
-$$V(y) = E( (y - E(y))^2 )$$
+Here we will look at the *sample variance*, expressed as $s_{y}^2$:
 
-Breaking this down, we see that the variance is calculated using:
-* $y - E(y)$, i.e. the difference between an observed height and the mean height.  
-* $(y - E(y))^2$, i.e. the squared difference between an observed height and the mean height.  
-* $E( (y - E(y))^2 )$, i.e. the expectation of this squared difference.
+$$s_{y}^2 = \frac{1}{n-1} \left( \sum_{i=1}^n (y_{i} - \bar{y})^2 \right)$$
+
+Breaking this down, we see that the sample variance is calculated using:
+* $y_{i} - \bar{y}$, i.e. the difference between an observed height and the sample mean height.  
+* $(y_{i} - \bar{y})^2$, i.e. the squared difference between an observed height and the sample mean height.  
+* $\frac{1}{n-1} \sum_{i=1}^n (y - \bar{y})^2 $, i.e. the mean of this squared difference. Note that we divide by $n-1$ rather than $n$, which is known as a bias correction.
 
 Why are we interested in this value? We are mainly interested in the variance
 because it allows us to calculate the standard deviation, which can be interpreted
@@ -68,9 +74,9 @@ on the original scale. Let's look at this below.
 
 ## The standard deviation
 The *standard deviation* of a distribution is the *square root* of the variance.
-The standard deviation is expressed as $\sigma_y$:
+The sample standard deviation is expressed as $s_y$:
 
-$$\sigma_y = \sqrt{V(y)}$$
+$$s_y = \sqrt{s_{y}^2}$$
 
 The standard deviation is interpreted as a measure of the difference between
 values in the distribution and the mean of the distribution. A higher standard deviation
@@ -115,9 +121,9 @@ ggplot(sample, aes(x = heights)) +
 
 <img src="../fig/rmd-01-histogram sample female heights-1.png" title="plot of chunk histogram sample female heights" alt="plot of chunk histogram sample female heights" width="612" style="display: block; margin: auto;" />
 
-We can calculate the mean of our sample using `mean()`. This value lies 
-close to the original mean of 162 cm. Here we see that the mean of a distribution
-approximately equals the mean of our sample.
+We can calculate sample mean using `mean()`. This value lies 
+close to the population mean of 162 cm. Here we see that the sample mean
+approximately equals the population mean with a sufficiently large sample.
 
 
 ~~~
@@ -134,11 +140,12 @@ meanHeight
 {: .output}
 
 We can also calculate the variance as the mean of the squared differences
-between our sampled observations and the mean of our sample:
+between our sampled observations and the sample mean, where
+`sum()` sums the squared differences and we divide by $n-1 = 999$:
 
 
 ~~~
-varHeight <- mean( (sample$heights - meanHeight)^2 )
+varHeight <- (1/999) * sum( (sample$heights - meanHeight)^2 ) 
 varHeight
 ~~~
 {: .language-r}
@@ -146,11 +153,11 @@ varHeight
 
 
 ~~~
-[1] 49.21161
+[1] 49.26087
 ~~~
 {: .output}
 
-Finally, we calculate the standard deviation as the square root of the variance.
+Finally, we calculate the sample standard deviation as the square root of the sample variance.
 The square root is obtained using `sqrt()`. Recall that we calculate the standard
 deviation to have a measure of spread in our distribution, in the same units
 as our original data (in this case, mmHg).
@@ -165,7 +172,7 @@ sdHeight
 
 
 ~~~
-[1] 7.015098
+[1] 7.018609
 ~~~
 {: .output}
 
@@ -179,7 +186,7 @@ sdHeight
 > <img src="../fig/rmd-01-blood pressure density plot-1.png" title="plot of chunk blood pressure density plot" alt="plot of chunk blood pressure density plot" width="612" style="display: block; margin: auto;" />
 > A) Sample one thousand observations from this distribution. Then, create a histogram of your sample.  
 > B) Calculate the average systolic blood pressure in your sample.
-> Does this value correspond to the mean of the distribution?    
+> Does this value correspond to the population mean?    
 > C) Calculate the variance of your sample.  
 > D) Calculate the standard deviation of your sample. How is the standard deviation interpreted here?
 > 
@@ -227,7 +234,7 @@ sdHeight
 > > 
 > > 
 > > ~~~
-> > varBP <- mean( (sample$bloodPressure - meanBP)^2 )
+> > varBP <- (1/999) * sum( (sample$bloodPressure - meanBP)^2 )
 > > varBP
 > > ~~~
 > > {: .language-r}
@@ -235,7 +242,7 @@ sdHeight
 > > 
 > > 
 > > ~~~
-> > [1] 103.6643
+> > [1] 103.768
 > > ~~~
 > > {: .output}
 > > 
@@ -253,7 +260,7 @@ sdHeight
 > > 
 > > 
 > > ~~~
-> > [1] 10.18157
+> > [1] 10.18666
 > > ~~~
 > > {: .output}
 > {: .solution}
