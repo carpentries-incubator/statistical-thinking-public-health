@@ -6,8 +6,8 @@ title: "Estimating the mean, variance and standard deviation"
 objectives:
   - "Estimate the mean, variance and standard deviation of a variable through simulation."
 keypoints:
-  - The mean is the average value expected in the population. The mean is also known as the expectation.
-  - The variance is the average of the squared differences between values in the distribution and the mean of the distribution.
+  - The mean is the average value. The population has a population mean, while we estimate a sample mean from our sample.
+  - The sample variance is the average of the squared differences between values in our sample and the mean of our sample.
   - The standard deviation is the square root of the variance. It measures the spread of observations around the mean, in units of the original data. 
 questions:
   - How are the mean, variance and standard deviation calculated and interpreted?
