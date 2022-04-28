@@ -30,7 +30,7 @@ estimate of the mean, when we simulate many times from the same distribution.
 This will allow us to understand the meaning of the 95% confidence interval.
 
 ## The standard error 
-In the previous episode, we learnt that the standard deviation is a measure of the 
+In the previous episode, we learned that the standard deviation is a measure of the 
 expected difference between a value in the distribution and the mean of
 the distribution. In this episode we will work with a related quantity, called
 the *standard error*. The standard error quantifies the spread of sample means
@@ -42,7 +42,7 @@ the US, to estimate the mean height. The standard error of this estimate in this
 
 The standard error is calculated using the standard deviation and the sample size:
 
-$$\text{se}(y) = \sigma_y/\sqrt{n}.$$
+$$\text{se}(y) = s_{y}/\sqrt{n}.$$
 
 Therefore, for our female heights sample, the standard error was calculated
 as $\text{se}(y) = 6.89 / \sqrt{1000} \approx 0.22$ cm.
@@ -57,7 +57,7 @@ calculate the 95% confidence interval, as we will do in the next section.
 We use the standard error to calculate the 95% confidence interval. 
 This interval equals, for large samples:
 
-$$[E(y) - 1.96 \times \text{se}(y); E(y) + 1.96 \times \text{se}(y)],$$
+$$[\bar{y} - 1.96 \times \text{se}(y); \bar{y} + 1.96 \times \text{se}(y)],$$
 
 i.e. the mean +/- 1.96 times the standard error.
 
@@ -77,7 +77,7 @@ we are fairly confident that it will contain the true population mean, but
 we cannot know for sure. 
 
 Let's take a look at how we can calculate the 95% confidence interval in R.
-First, we sample 1000 observations of female heights and calculate the mean, 
+First, we sample 1000 observations of female heights and calculate the sample mean, 
 as in the previous episode. Then, we calculate the standard error as the standard
 deviation divided by the square root of the sample size. Note the use of the 
 `sd()` function, which returns the standard deviation 
@@ -116,9 +116,9 @@ of 162. It would then be part of the 5% of 95% confidence intervals
 that do not capture the population mean. 
 
 > ## Exercise
-> A) Given the distribution of systolic blood pressure, with a mean of 112 mmHg
-> and a standard deviation of 10 mmHg, obtain a random sample of 2000 observations.  
-> B) Estimate the mean systolic blood pressure and provide a 95% confidence interval for this
+> A) Given the distribution of systolic blood pressure, with a population mean of 112 mmHg
+> and a population standard deviation of 10 mmHg, obtain a random sample of 2000 observations.  
+> B) Estimate the sample mean systolic blood pressure and provide a 95% confidence interval for this
 > estimate. How do we interpret this interval?
 > 
 > > ## Solution
@@ -162,7 +162,7 @@ that do not capture the population mean.
 
 ## Simulating 95% confidence intervals
 In the previous section we learned that 95% of 95% confidence intervals
-are expected to contain the true population mean. Let's see this in 
+are expected to contain the population mean. Let's see this in 
 action, by simulating 100 data sets of 1000 female heights.
 
 First, we create a tibble for our means and confidence intervals.
