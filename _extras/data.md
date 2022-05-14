@@ -1,0 +1,34 @@
+---
+layout: page
+title: About the NHANES data
+---
+
+Our data comes from the National Health and Nutrition Examination Survey (NHANES), run by the CDC in the US. This data describes the demographics, physical properties, health and lifestyle of children and adults. Every year 5,000 participants are enrolled and the data is used for research and policy-making purposes. We are using data from the 2009-2010 and 2011-2012 editions of this survey. You can find out more about NHANES on the CDC website [here](https://www.cdc.gov/nchs/nhanes/).
+
+In the original data, particular subsets of the population are oversampled, such that conclusions based on the data are also representative of ethnic minorities. This introduces complications into the analysis. Therefore, we are using a subset of the data that can be treated as a simple random sample of the US population. This subset is suitable for educational purposes, but may not be useful for research applications. The subsetting is done by the `load_data.R` script, which you can find [here](https://github.com/carpentries-incubator/statistics-r-public-health/blob/gh-pages/workshop-project/scripts/load_data.R) and inside the `scripts` folder of the `workshop_project` workshop directory. 
+
+The variable names and the associated descriptions can be found in the table below.
+
+| Variable        | Definition                                                                                                                                                                                                                                                                                     |
+|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ID              | A unique sample identifier.                                                                                                                                                                                                                                                                    |
+| Sex          | Sex of study participant coded as male or female.                                                                                                                                                                                                                                     |
+| Age             | Age in years at screening of study participant. Note: Subjects 80 years or older were recorded as 80.                                                                                                                                                                                          |
+| AgeMonths       | Age in months.   |
+| Work            | Indicates whether the individual is current working or not. One of Looking, NotWorking or Working.                                                                                                                                                                                             |
+| Weight          | Weight in kg.                                                                                                                                                                                                                                                                                  |
+| Height          | Standing height in cm. Reported for participants aged 2 years or older.                                                                                                                                                                                                                        |
+| BMI             | Body mass index (weight/height2 in kg/m2). Reported for participants aged 2 years or older.                                                                                                                                                                                                    |
+| Pulse           | 60 second pulse rate.                                                                                                                                                                                                                                                                          |
+| BPSysAve        | Combined systolic blood pressure reading, following the procedure outlined for BPXSAR.                                                                                                                                                                                                         |
+| BPDiaAve        | Combined diastolic blood pressure reading, following the procedure outlined for BPXDAR.                                                                                                                                                                                                        |
+| TotChol         | Total HDL cholesterol in mmol/L. Reported for participants aged 6 years or older.                                                                                                                                                                                                              |
+| UrineFlow1      | Urine flow rate (urine volume/time since last urination) in mL/min - first test. Reported for participants aged 6 years or older.                                                                                                                                                              |
+| Depressed       | Self-reported number of days where participant felt down, depressed or hopeless. Reported for participants aged 18 years or older. One of None, Several, Majority (more than half the days), or AlmostAll.                                                                                     |
+| PhysActive      | Participant does moderate or vigorous-intensity sports, fitness or recreational activities (Yes or No). Reported for participants 12 years or older.                                                                                                                                           |
+| SmokeNow        | Study participant currently smokes cigarettes regularly. Reported for participants aged 20 years or older as Yes or No, provieded they answered Yes to having somked 100 or more cigarettes in their life time. All subjects who have not smoked 100 or more cigarettes are listed as NA here. |
+| FEV1         | Baseline 1st Test Spirometry, Forced Expiratory Volume in the first 1.0 second, in mL.                                                                                                         |
+| Hemoglobin   | Complete Blood Count with 5-part Differential - Whole Blood (CBC_F) |
+
+
+{% include links.md %}
