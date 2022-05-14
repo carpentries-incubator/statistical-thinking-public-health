@@ -80,7 +80,7 @@ $$s_{y}^2 = \frac{1}{n-1} \left( \sum_{i=1}^n (y_{i} - \bar{y})^2 \right)$$
 Breaking this down, we see that the sample variance is calculated using:
 * $y_{i} - \bar{y}$, i.e. the difference between an observed height and the sample mean height.  
 * $(y_{i} - \bar{y})^2$, i.e. the squared difference between an observed height and the sample mean height.  
-* $\frac{1}{n-1} \sum_{i=1}^n (y_i - \bar{y})^2 $, i.e. the mean of this squared difference. Note that we divide by $n-1$ rather than $n$, which is known as a bias correction.
+* $\frac{1}{n-1} \sum_{i=1}^n (y_i - \bar{y})^2 $, i.e. the mean of this squared difference. Note that we divide by $n-1$ rather than $n$, which is known as a bias correction. This allows us to estimate the *population variance* more accurately. 
 
 Why are we interested in this value? We are mainly interested in the variance
 because it allows us to calculate the standard deviation, which can be interpreted
