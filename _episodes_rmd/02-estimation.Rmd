@@ -34,11 +34,12 @@ We will also visualise the variation in the
 estimate of the mean, when we simulate many times from the same distribution.
 This will allow us to understand the meaning of the 95% confidence interval.
 
-## The standard error 
+## The standard error of the mean
 In the previous episode, we learned that the standard deviation is a measure of the 
 expected difference between a value in the distribution and the mean of
 the distribution. In this episode we will work with a related quantity, called
-the *standard error*. The standard error quantifies the spread of sample means
+the *standard error of the mean* (referred to hereafter as the standard error). 
+The standard error quantifies the spread of sample means
 around the population mean. 
 
 For example, let's say we collected 1000 observations of female heights in
