@@ -34,8 +34,8 @@ Before discussing the definitions of these values, let's look at an example. The
 heights of people of the female sex in the US approximately follow a distribution 
 with a mean of 162 cm and a standard deviation of 6.89 cm. 
 The distribution is shown below. Values on the x-axis with a greater density on the
-y-axis have a higher chance of occurring. So a height of 162 cm is most likely to occur, while a height of
-140 cm is very unlikely to occur. 
+y-axis have a higher chance of occurring. Under this distribution, a height of 162 cm would be most likely to occur, while a height of
+140 cm would be very unlikely to occur. 
 
 ```{r height density plot, echo = FALSE}
 range <- tibble(limits = c(162 - 6.89 * 4, 162 + 6.89 * 4))
@@ -57,7 +57,8 @@ The distribution of female heights has a few properties of interest, which we ca
 
 ## The mean
 The *population mean* is the average of all the values that make up a distribution. 
-In the case of female heights in the US, the population mean is 162 cm. Therefore, the average height of a US female is 162 cm.
+In the case of female heights in the US, we will assume that the the population mean is 162 cm. 
+Under this assumption, the average height of a US female is 162 cm.
 
 After obtaining our sample of 1000 observations from the population, we may be interested in the *sample mean*.
 We expect our sample mean to equal the population mean, with a sufficiently large sample.
@@ -87,16 +88,20 @@ because it allows us to calculate the standard deviation, which can be interpret
 on the original scale. Let's look at this below.
 
 ## The standard deviation
-The *standard deviation* of a distribution is the *square root* of the variance.
-The sample standard deviation is expressed as $s_y$:
-
-$$s_y = \sqrt{s_{y}^2}$$
-
+The *standard deviation* of a distribution is the *square root* of the variance. 
 The standard deviation is interpreted as a measure of the difference between
 values in the distribution and the mean of the distribution. A higher standard deviation
 indicates that the spread around the mean is greater. There is no "good" or "bad"
 standard deviation - its purpose is to give us an idea of the spread of observations
 in the population. 
+
+After obtaining our sample of 1000 observations from the population, we may be interested in the sample standard deviation. 
+We expect our sample standard deviation to equal the population standard deviation, with a sufficiently large sample. 
+The sample standard deviation is expressed as $s_y$:
+
+$$s_y = \sqrt{s_{y}^2}$$
+
+
 
 ## Estimating the mean, variance and standard deviation through simulation
 Another route to understanding the mean, variance and standard deviation is
