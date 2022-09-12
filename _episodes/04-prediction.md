@@ -54,7 +54,7 @@ dat %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-explore association rounded Height and Weight-1.png" title="plot of chunk explore association rounded Height and Weight" alt="plot of chunk explore association rounded Height and Weight" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-explore association rounded Height and Weight-1.png" alt="plot of chunk explore association rounded Height and Weight" width="612" style="display: block; margin: auto;" />
 
 Now we can calculate the mean Weight for each Height. In the code below, 
 we first remove rows with missing 
@@ -99,7 +99,7 @@ dat %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-explore association rounded Height and Weight with means-1.png" title="plot of chunk explore association rounded Height and Weight with means" alt="plot of chunk explore association rounded Height and Weight with means" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-explore association rounded Height and Weight with means-1.png" alt="plot of chunk explore association rounded Height and Weight with means" width="612" style="display: block; margin: auto;" />
 
 We see that as the positive correlation coefficient suggested, mean
 Weight indeed increases with Height. The outer confidence intervals are much
@@ -131,7 +131,7 @@ observation.
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-04-FEV1 age scatterplot-1.png" title="plot of chunk FEV1 age scatterplot" alt="plot of chunk FEV1 age scatterplot" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-04-FEV1 age scatterplot-1.png" alt="plot of chunk FEV1 age scatterplot" width="612" style="display: block; margin: auto;" />
 > > 
 > > B) 
 > > 
@@ -164,6 +164,6 @@ observation.
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-04-FEV1 age scatterplot with means-1.png" title="plot of chunk FEV1 age scatterplot with means" alt="plot of chunk FEV1 age scatterplot with means" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-04-FEV1 age scatterplot with means-1.png" alt="plot of chunk FEV1 age scatterplot with means" width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}

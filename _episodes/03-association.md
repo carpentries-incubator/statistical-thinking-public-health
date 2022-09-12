@@ -41,7 +41,7 @@ dat %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-03-explore association Height and Weight-1.png" title="plot of chunk explore association Height and Weight" alt="plot of chunk explore association Height and Weight" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-03-explore association Height and Weight-1.png" alt="plot of chunk explore association Height and Weight" width="612" style="display: block; margin: auto;" />
 
 We see that on average, higher Weights are associated with higher Heights. 
 This is an example of a *positive* linear association, as we see an increase
@@ -69,7 +69,7 @@ and an absence of a linear association.
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-03-urineflow age scatterplot-1.png" title="plot of chunk urineflow age scatterplot" alt="plot of chunk urineflow age scatterplot" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-03-urineflow age scatterplot-1.png" alt="plot of chunk urineflow age scatterplot" width="612" style="display: block; margin: auto;" />
 > > 
 > > B) There appears to be a negative linear association between FEV1 and age. 
 > > 
@@ -81,7 +81,7 @@ and an absence of a linear association.
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-03-FEV1 age scatterplot-1.png" title="plot of chunk FEV1 age scatterplot" alt="plot of chunk FEV1 age scatterplot" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-03-FEV1 age scatterplot-1.png" alt="plot of chunk FEV1 age scatterplot" width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 

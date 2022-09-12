@@ -228,11 +228,11 @@ ggplot(means, aes(x = meanHeight, y = sampleID, colour = capture)) +
  geom_errorbar(aes(xmin = lower_CI, xmax = upper_CI, colour = capture)) +
  geom_vline(xintercept = 162, linetype = "dashed") +
  scale_color_manual("Population mean captured",
-                    values = c("red", "black"))
+                    values = c("magenta", "black"))
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-02-plot heights confidence intervals-1.png" title="plot of chunk plot heights confidence intervals" alt="plot of chunk plot heights confidence intervals" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-02-plot heights confidence intervals-1.png" alt="plot of chunk plot heights confidence intervals" width="612" style="display: block; margin: auto;" />
 
 In this instance, 2 out of 100 95% confidence intervals did not capture
 the population mean. If you run the above code multiple times, you will
@@ -307,11 +307,11 @@ intervals will not capture the population mean.
 > >   geom_errorbar(aes(xmin = lower_CI, xmax = upper_CI, colour = capture)) +
 > >   geom_vline(xintercept = 112, linetype = "dashed") +
 > >   scale_color_manual("Population mean captured",
-> >                      values = c("red", "black"))
+> >                      values = c("magenta", "black"))
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-02-plot blood pressure confidence intervals-1.png" title="plot of chunk plot blood pressure confidence intervals" alt="plot of chunk plot blood pressure confidence intervals" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-02-plot blood pressure confidence intervals-1.png" alt="plot of chunk plot blood pressure confidence intervals" width="612" style="display: block; margin: auto;" />
 > > 
 > > D) Increasing the number of observations per data set decreases the width of confidence intervals. 
 > > Decreasing the number of observations per data set has the opposite effect. 
