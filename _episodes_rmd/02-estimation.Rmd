@@ -210,7 +210,7 @@ ggplot(means, aes(x = meanHeight, y = sampleID, colour = capture)) +
  geom_errorbar(aes(xmin = lower_CI, xmax = upper_CI, colour = capture)) +
  geom_vline(xintercept = 162, linetype = "dashed") +
  scale_color_manual("Population mean captured",
-                    values = c("red", "black"))
+                    values = c("magenta", "black"))
 ```
 
 In this instance, 2 out of 100 95% confidence intervals did not capture
@@ -283,7 +283,7 @@ intervals will not capture the population mean.
 > >   geom_errorbar(aes(xmin = lower_CI, xmax = upper_CI, colour = capture)) +
 > >   geom_vline(xintercept = 112, linetype = "dashed") +
 > >   scale_color_manual("Population mean captured",
-> >                      values = c("red", "black"))
+> >                      values = c("magenta", "black"))
 > > ```
 > > 
 > > D) Increasing the number of observations per data set decreases the width of confidence intervals. 
