@@ -319,3 +319,50 @@ intervals will not capture the population mean.
 > > we still have on average 5 out of 100 intervals that do not capture the true population mean. 
 > {: .solution}
 {: .challenge}
+
+> ## Why is the confidence interval calculated with 1.96?
+> 
+>To understand where the 1.96 mulitplier comes from,
+>we need to look at the *standard normal distribution*.
+>The standard normal distribution is a normal distribution 
+>with a mean of 0 and a standard deviation of 1:
+>
+><img src="../fig/rmd-02-plot standard normal-1.png" alt="plot of chunk plot standard normal" width="612" style="display: block; margin: auto;" />
+>
+>Importantly, 95% of the density of this distribution falls within
+>the range of -1.96 and 1.96:
+>
+><img src="../fig/rmd-02-plot standard normal with bounds-1.png" alt="plot of chunk plot standard normal with bounds" width="612" style="display: block; margin: auto;" />
+>
+>It can be shown that for a sample mean $\bar{X}$, coming
+>from a normal sampling distribution, $Z$ follows a standard
+>normal distribution:
+>
+>$$Z = \frac{\bar{X}-\mu}{\sigma / n}$$
+>
+>Here, $\mu$ is the population mean, $\sigma$ is the 
+>population standard deviation and $n$ is the sample size.
+>
+>Since 95% of the density of the standard normal distribution
+>falls between -1.96 and 1.96, the following holds:
+>
+>$$
+>Pr(-1.96 < Z < 1.96) = 0.95
+>$$
+>
+>Filling in $Z$ gives us:
+>
+>$$
+>Pr(-1.96 < \frac{\bar{X}-\mu}{\sigma / n} < 1.96) = 0.95
+>$$
+>
+>Which can be derived to:
+>
+>$$
+>Pr(\bar{X} -1.96 \frac{\sigma}{n} < \mu < \bar{X} + 1.96 \frac{\sigma}{n}) = 0.95
+>$$
+>
+>Since 95% of 95% confidence intervals will contain the true population mean $\mu$,
+>the 95% confidence interval is given by $\bar{X} \pm 1.96 \times \frac{\sigma}{n}$, i.e. 
+>$\bar{X} \pm 1.96 \times se(X)$
+{: .callout}
