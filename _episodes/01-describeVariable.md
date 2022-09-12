@@ -32,7 +32,7 @@ The distribution is shown below. Values on the x-axis with a greater density on 
 y-axis have a higher chance of occurring. So a height of 162 cm is most likely to occur, while a height of
 140 cm is very unlikely to occur. 
 
-<img src="../fig/rmd-01-height density plot-1.png" title="plot of chunk height density plot" alt="plot of chunk height density plot" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-01-height density plot-1.png" alt="plot of chunk height density plot" width="612" style="display: block; margin: auto;" />
 
 You may recognise the shape of the above distribution. It is an example of a
 *normal* distribution. 
@@ -119,7 +119,7 @@ ggplot(sample, aes(x = heights)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-01-histogram sample female heights-1.png" title="plot of chunk histogram sample female heights" alt="plot of chunk histogram sample female heights" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-01-histogram sample female heights-1.png" alt="plot of chunk histogram sample female heights" width="612" style="display: block; margin: auto;" />
 
 We can calculate sample mean using `mean()`. This value lies 
 close to the population mean of 162 cm. Here we see that the sample mean
@@ -183,7 +183,7 @@ sdHeight
 > 
 > 
 > 
-> <img src="../fig/rmd-01-blood pressure density plot-1.png" title="plot of chunk blood pressure density plot" alt="plot of chunk blood pressure density plot" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-01-blood pressure density plot-1.png" alt="plot of chunk blood pressure density plot" width="612" style="display: block; margin: auto;" />
 > A) Sample one thousand observations from this distribution. Then, create a histogram of your sample.  
 > B) Calculate the average systolic blood pressure in your sample.
 > Does this value correspond to the population mean?    
@@ -210,7 +210,7 @@ sdHeight
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-01-blood pressure sample and histogram-1.png" title="plot of chunk blood pressure sample and histogram" alt="plot of chunk blood pressure sample and histogram" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-01-blood pressure sample and histogram-1.png" alt="plot of chunk blood pressure sample and histogram" width="612" style="display: block; margin: auto;" />
 > > 
 > > B) We can then calculate the average systolic blood pressure 
 > > in our sample using `mean()`. The mean of our sample lies closely to the mean of the original distribution. 
