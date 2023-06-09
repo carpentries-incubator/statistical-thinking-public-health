@@ -24,7 +24,8 @@ To install the required packages, please follow the following steps:
 2. Allow `renv` to install the required packages locally by typing `renv::restore()` in the console.
 3. When the prompt comes up, answer it with `Y`. 
 4. After installation has completed, load the required packages by typing `source("scripts/load_packages.R")` into the console.
-5. You are now set up for the lesson! 
+5. Load the lesson data by typing `source("scripts/load_data.R")` in the console.
+6. You are now set up for the lesson! 
 
 Note: the lesson data should be in your Environment under the name `dat`. If you would like more information 
 about the data, see the [data][lesson-data] page.
